@@ -1,0 +1,127 @@
+---
+title   : RubyWorks Projects
+stencil : rhtml
+
+--- html
+
+<div class="title">Ruby.new</div>
+
+--- markdown
+
+I love Ruby. It is no doubt the best programming language I've had the priviledge to write-in.
+Yet there are some aspect to it that I feel can be impoved. This section outlines an evolving
+set of notions about what I would like to see changed. Perhaps they will find there way into
+Ruby one day; perhaps they will end up defining a new programming language based on Ruby, or
+perhaps they will just sit here on this page. In either case, here they be...
+
+# Class/Module Unification
+
+I beleive the distinciton between class and module in Ruby, is completely disadvantgeous
+to the language. For starters, the distinciton is arbitrary. There is literally conditional
+code in Ruby that prevents the instaniation of a module or including a class. Remove these
+conditions and Ruby will continue to work regardless.
+
+In addition, the distinction makes it impossible for our programs to use namespace freely.
+
+--- coderay.ruby
+
+    class SomeSpace::Foo
+      ...
+    end
+
+--- markdown
+
+Will blow up in our face becuase SomeSpace is not defined. Have you ever run into the issue 
+of requiring a library that uses the namespace defined by the file you requiring from? 
+Frustratingly you have to put the requires at the bottom of the script.
+
+
+# Method and Variable Isomorphics
+
+A Method definition will amount to no more than assigning a Proc to a variable.
+Thus a Proc and a Method are no longer distinct, and the #call method becomes generally unnecessary.
+Also the kernel method Proc itself is depricated and { } always stand for a proc/method.
+For example:
+
+--- coderay.ruby
+
+    class Foo
+      bar = { |x| puts x }
+    end
+
+--- markdown
+
+Is the same as:
+
+--- coderay.ruby
+
+    class Foo
+      def bar(x)
+        puts x
+      end
+    end
+
+--- markdown
+
+# Syntax Sugar $, @ and @@
+
+Given the above, class variables can be accessed just as class methods, i.e. using the class name as a prefix.
+@@ then becomes no more the syntax sugar meaning just that. Likewise @ becomes no more than syntax sugar for self.
+To follow through with this $ becomes syntax sugar for the new unversally available toplevel object.
+
+--- coderay.ruby
+
+    $x == toplevel.x
+    @@x == ClassName.x (in class context)
+    @x == self.x (in object context)
+
+--- markdown
+
+We prefer that self be the default receiver wheneve a receiver is not specified.
+But we must consider the case of ambiguity between this and locals.
+The simplist way is probably to define % as synatical sugar for a local object attributed to blocks (i.e. Proc/Method).
+This still bares consideration.
+
+
+# String will function as if an Array of Characters
+
+The String class will have its method definitions stricty coorrespond to those of the Array class,
+in all places applicable.
+
+
+# %l and %L
+
+Respective to %q and %Q, will provide a margin controlled literal string constructor.
+
+--- coderay.ruby
+
+    x = %L|This
+          | is
+          |  margin
+          |   controlled
+
+--- markdown
+
+Like %q and %Q other deliminators can be used.
+
+
+# NackClass
+
+A NackClass is the same as NilClass except for any method it does not recognize, it return s itself.
+(I use to call this NullClass, but "nack" seems a more fitting term.)
+
+
+# Boolean
+
+If we had a tru Boolean class, with a internal true or false state, ...
+
+
+# Infinity
+
+Err.. Where is Infinity?
+
+
+# DateTime
+
+An improved class for dealing with dates and times that will incorporate the current Time, Date and ParseDate classes.
+

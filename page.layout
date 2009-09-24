@@ -1,0 +1,71 @@
+---
+stencil: liquid
+
+--- html
+
+<html>
+
+<head>
+  <title>Calibre Ruby Works</title>
+  <style>
+    body  { font-family: monospace; font-size: 10pt; }
+      li  { font-family: monospace; font-size: 10pt; padding-bottom: 30px; }
+     li a { color: #aaa; font-size: 0.9em; }
+   .title { font-family: arial; color: red; font-size: 26pt; }
+  </style>
+</head>
+
+<body bgcolor="white">
+<div style="margin: 0 auto; width: 960px;">
+
+<!-- Title -->
+<span style="font-family: monospace; font-size: 32pt; color: orange">
+<br/>&nbsp;<b>Calibre<img src="assets/images/ruby_pic.gif"/>Works</b>
+
+</span>
+<!-- Title -->
+
+<hr style="color: red; border-height: 1" />
+
+<div style="font-family: monospace; font-size: 8pt;">
+  <img src="assets/images/ruby_1.jpg" align="left">
+
+  <a href="index.html">Home/Blog</a>
+  <a href="projects.html">Projects</a>
+  <a href="rubynew.html">Ruby.new</a>
+
+  <FORM method="GET" action="http://www.google.com/groups" target="_blank">
+  <!-- Search Google -->
+  <A HREF="http://www.google.com/">
+  <IMG SRC="http://www.google.com/logos/Logo_25wht.gif" border="0" ALT="Google" align="absmiddle"></A>
+  <INPUT TYPE="text" name="q" size="25" maxlength="255" value="">
+  <input type="hidden" name="hl" value="en">
+  <input type="hidden" name="group" value="comp.lang.ruby">
+  <INPUT type="submit" name="btnG" VALUE="Search Ruby Mailing List">
+  <!-- Search Google -->
+  </FORM>
+</div>
+
+<hr style="color: red; border-height: 1" />
+
+<br/>
+
+{{ content }}
+
+<br/><br/><hr/><br/><br/>
+
+<center>
+<img src="assets/images/serpent_by_ruby_lee.jpg">
+<br/><br/>
+<font face="arial">Serpent by Ruby Lee</font>
+</center>
+
+<br/><br/>
+<hr>
+(c) 2002 Thomas Sawyer, All Rights Reserved<br>
+Special Thanks to Dieter Stein for the logo.
+</body>
+
+</div>
+</html>
+

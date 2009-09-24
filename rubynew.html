@@ -1,0 +1,185 @@
+
+<html>
+
+<head>
+  <title>Calibre Ruby Works</title>
+  <style>
+    body  { font-family: monospace; font-size: 10pt; }
+      li  { font-family: monospace; font-size: 10pt; padding-bottom: 30px; }
+     li a { color: #aaa; font-size: 0.9em; }
+   .title { font-family: arial; color: red; font-size: 26pt; }
+  </style>
+</head>
+
+<body bgcolor="white">
+<div style="margin: 0 auto; width: 960px;">
+
+<!-- Title -->
+<span style="font-family: monospace; font-size: 32pt; color: orange">
+<br/>&nbsp;<b>Calibre<img src="assets/images/ruby_pic.gif"/>Works</b>
+
+</span>
+<!-- Title -->
+
+<hr style="color: red; border-height: 1" />
+
+<div style="font-family: monospace; font-size: 8pt;">
+  <img src="assets/images/ruby_1.jpg" align="left">
+
+  <a href="index.html">Home/Blog</a>
+  <a href="projects.html">Projects</a>
+  <a href="rubynew.html">Ruby.new</a>
+
+  <FORM method="GET" action="http://www.google.com/groups" target="_blank">
+  <!-- Search Google -->
+  <A HREF="http://www.google.com/">
+  <IMG SRC="http://www.google.com/logos/Logo_25wht.gif" border="0" ALT="Google" align="absmiddle"></A>
+  <INPUT TYPE="text" name="q" size="25" maxlength="255" value="">
+  <input type="hidden" name="hl" value="en">
+  <input type="hidden" name="group" value="comp.lang.ruby">
+  <INPUT type="submit" name="btnG" VALUE="Search Ruby Mailing List">
+  <!-- Search Google -->
+  </FORM>
+</div>
+
+<hr style="color: red; border-height: 1" />
+
+<br/>
+
+
+<div class="title">Ruby.new</div>
+
+
+<p>I love Ruby. It is no doubt the best programming language I've had the priviledge to write-in.
+Yet there are some aspect to it that I feel can be impoved. This section outlines an evolving
+set of notions about what I would like to see changed. Perhaps they will find there way into
+Ruby one day; perhaps they will end up defining a new programming language based on Ruby, or
+perhaps they will just sit here on this page. In either case, here they be...</p>
+
+<h1>Class/Module Unification</h1>
+
+<p>I beleive the distinciton between class and module in Ruby, is completely disadvantgeous
+to the language. For starters, the distinciton is arbitrary. There is literally conditional
+code in Ruby that prevents the instaniation of a module or including a class. Remove these
+conditions and Ruby will continue to work regardless.</p>
+
+<p>In addition, the distinction makes it impossible for our programs to use namespace freely.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+    <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">SomeSpace::Foo</span>
+      ...
+    <span style="color:#080;font-weight:bold">end</span>
+
+</pre></div>
+</div>
+
+<p>Will blow up in our face becuase SomeSpace is not defined. Have you ever run into the issue
+of requiring a library that uses the namespace defined by the file you requiring from?
+Frustratingly you have to put the requires at the bottom of the script.</p>
+
+<h1>Method and Variable Isomorphics</h1>
+
+<p>A Method definition will amount to no more than assigning a Proc to a variable.
+Thus a Proc and a Method are no longer distinct, and the #call method becomes generally unnecessary.
+Also the kernel method Proc itself is depricated and { } always stand for a proc/method.
+For example:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+    <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Foo</span>
+      bar = { |x| puts x }
+    <span style="color:#080;font-weight:bold">end</span>
+
+</pre></div>
+</div>
+
+<p>Is the same as:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+    <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Foo</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">bar</span>(x)
+        puts x
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+</pre></div>
+</div>
+
+<h1>Syntax Sugar $, @ and @@</h1>
+
+<p>Given the above, class variables can be accessed just as class methods, i.e. using the class name as a prefix.
+@@ then becomes no more the syntax sugar meaning just that. Likewise @ becomes no more than syntax sugar for self.
+To follow through with this $ becomes syntax sugar for the new unversally available toplevel object.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+    <span style="color:#d70;font-weight:bold">$x</span> == toplevel.x
+    <span style="color:#369">@@x</span> == <span style="color:#036;font-weight:bold">ClassName</span>.x (<span style="color:#080;font-weight:bold">in</span> <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">context</span>)
+    <span style="color:#33B">@x</span> == <span style="color:#038;font-weight:bold">self</span>.x (<span style="color:#080;font-weight:bold">in</span> object context)
+
+</pre></div>
+</div>
+
+<p>We prefer that self be the default receiver wheneve a receiver is not specified.
+But we must consider the case of ambiguity between this and locals.
+The simplist way is probably to define % as synatical sugar for a local object attributed to blocks (i.e. Proc/Method).
+This still bares consideration.</p>
+
+<h1>String will function as if an Array of Characters</h1>
+
+<p>The String class will have its method definitions stricty coorrespond to those of the Array class,
+in all places applicable.</p>
+
+<h1>%l and %L</h1>
+
+<p>Respective to %q and %Q, will provide a margin controlled literal string constructor.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+    x = %<span style="color:#036;font-weight:bold">L</span>|<span style="color:#036;font-weight:bold">This</span>
+          | is
+          |  margin
+          |   controlled
+
+</pre></div>
+</div>
+
+<p>Like %q and %Q other deliminators can be used.</p>
+
+<h1>NackClass</h1>
+
+<p>A NackClass is the same as NilClass except for any method it does not recognize, it return s itself.
+(I use to call this NullClass, but "nack" seems a more fitting term.)</p>
+
+<h1>Boolean</h1>
+
+<p>If we had a tru Boolean class, with a internal true or false state, ...</p>
+
+<h1>Infinity</h1>
+
+<p>Err.. Where is Infinity?</p>
+
+<h1>DateTime</h1>
+
+<p>An improved class for dealing with dates and times that will incorporate the current Time, Date and ParseDate classes.</p>
+
+
+<br/><br/><hr/><br/><br/>
+
+<center>
+<img src="assets/images/serpent_by_ruby_lee.jpg">
+<br/><br/>
+<font face="arial">Serpent by Ruby Lee</font>
+</center>
+
+<br/><br/>
+<hr>
+(c) 2002 Thomas Sawyer, All Rights Reserved<br>
+Special Thanks to Dieter Stein for the logo.
+</body>
+
+</div>
+</html>
+
