@@ -6,64 +6,72 @@ stencil: liquid
 <html>
 
 <head>
-  <title>Calibre Ruby Works</title>
+  <title>Ruby Works</title>
+
+  <link REL="SHORTCUT ICON" HREF="{{ root }}assets/images/ruby_1.jpg" />
+
   <style>
-    body  { font-family: monospace; font-size: 10pt; }
+    body  { font-family: monospace; font-size: 10pt; margin: 0; padding: 0; background: url({{ root }}assets/images/bg.jpg) 0 -10px repeat-x #dfdfff; }
+
       li  { font-family: monospace; font-size: 10pt; padding-bottom: 30px; }
-     li a { color: #aaa; font-size: 0.9em; }
-   .title { font-family: arial; color: red; font-size: 26pt; }
+
+     .nav { font-family: arial;  height: 365px; }
+
+     .nav a { font-size: 18px; font-weight: bold; line-height: 36px; padding: 0 6px; text-decoration: none; }
+
+   .links a { color: #aaa; font-size: 0.9em; }
+
+   .title { font-family: arial; color: red; font-size: 28pt; height: 64px; background: url({{ root }}assets/images/ruby_1.jpg) no-repeat; padding-left: 64px; }
+
+   .title a { text-decoration: none; font-family: arial; color: red; font-size: 28pt; height: 64px; }
+
+   .title .date { font-size: 20pt; }
+
+   .footer { font-size: 10px; border-top: 1px solid #ccc; color: #999; }
   </style>
 </head>
 
-<body bgcolor="white">
+<body>
+
 <div style="margin: 0 auto; width: 960px;">
 
 <!-- Title -->
-<span style="font-family: monospace; font-size: 32pt; color: orange">
-<br/>&nbsp;<b>Calibre<img src="assets/images/ruby_pic.gif"/>Works</b>
+<div class="nav" style="background: url({{ root }}assets/images/serpent.jpg) no-repeat; padding-left: 300px;">
 
-</span>
-<!-- Title -->
+  <div style="font-family: arial; font-size: 32pt; color: #ee0022;">
+    <br/>
+    <b>Ruby Works</b> <br/>
+    <a href="index.html">Blog.read</a>
+    <a href="projects.html">Projects.inspect</a>
+    <a href="rubynew.html">Ruby.new</a>
+  </div>
+   
+  <div style="margin-top: 40px;">
+    <FORM method="GET" action="http://www.google.com/groups" target="_blank">
+    <!-- Search Google -->
+    <A HREF="http://www.google.com/">
+    <IMG SRC="http://www.google.com/logos/Logo_25wht.gif" border="0" ALT="Google" align="absmiddle"></A>
+    <INPUT TYPE="text" name="q" size="25" maxlength="255" value="">
+    <input type="hidden" name="hl" value="en">
+    <input type="hidden" name="group" value="comp.lang.ruby">
+    <INPUT type="submit" name="btnG" VALUE="Search Ruby Talk">
+    <!-- Search Google -->
+    </FORM>
+  </div>
 
-<hr style="color: red; border-height: 1" />
-
-<div style="font-family: monospace; font-size: 8pt;">
-  <img src="assets/images/ruby_1.jpg" align="left">
-
-  <a href="index.html">Home/Blog</a>
-  <a href="projects.html">Projects</a>
-  <a href="rubynew.html">Ruby.new</a>
-
-  <FORM method="GET" action="http://www.google.com/groups" target="_blank">
-  <!-- Search Google -->
-  <A HREF="http://www.google.com/">
-  <IMG SRC="http://www.google.com/logos/Logo_25wht.gif" border="0" ALT="Google" align="absmiddle"></A>
-  <INPUT TYPE="text" name="q" size="25" maxlength="255" value="">
-  <input type="hidden" name="hl" value="en">
-  <input type="hidden" name="group" value="comp.lang.ruby">
-  <INPUT type="submit" name="btnG" VALUE="Search Ruby Mailing List">
-  <!-- Search Google -->
-  </FORM>
 </div>
 
-<hr style="color: red; border-height: 1" />
-
-<br/>
+<div style="padding: 20px; background: white;">
 
 {{ content }}
 
-<br/><br/><hr/><br/><br/>
-
-<center>
-<img src="assets/images/serpent_by_ruby_lee.jpg">
 <br/><br/>
-<font face="arial">Serpent by Ruby Lee</font>
-</center>
 
-<br/><br/>
-<hr>
-(c) 2002 Thomas Sawyer, All Rights Reserved<br>
-Special Thanks to Dieter Stein for the logo.
+<div class="footer">
+(c) 2002 Thomas Sawyer, All Rights Reserved. Special Thanks to Dieter Stein for the Ruby icon.
+Graphic image is "Serpent" by Ruby Lee.
+</div>
+
 </body>
 
 </div>

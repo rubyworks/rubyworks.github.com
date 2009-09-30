@@ -1,0 +1,226 @@
+---
+title   : RubyWorks Projects
+stencil : rhtml
+
+--- html
+
+<%
+  require 'pom'
+  dirs = Dir['../*'] - ['../rubyworks.github.com', '../opendsl', '../rbsystem']
+  @projects = dirs.map{ |d| puts "Load: #{d}"; prj = POM::Project.new(d) ; prj.metadata.assert_valid ; prj }
+%>
+
+<div class="title">Projects.inspect</div>
+
+<% @projects.sort{ |a,b| a.metadata.package <=> b.metadata.package }.each do |prj| %>
+  <div class="links" style="float: right; padding-top: 30px;">
+    <a href="<%= prj.metadata.package %>/">Website</a>
+    <a href="http://github.com/rubyworks/<%= prj.metadata.package %>/tree/master">Development</a>
+  </div>
+  <h1><%= prj.metadata.title %></h1>
+  <%= prj.metadata.description %>
+  <br/><br/>
+<% end %>
+
+
+<!--
+
+<li><b>Baker</b>
+&nbsp;[<a href="http://baker.rubyforge.org">Website</a>]
+&nbsp;[<a href="http://rubyforge.org/projects/baker/">Development</a>]
+<br/><br/>Baker is a 100% Ruby implementation of a source-based package
+management system for unix-like operating systems. It is still under heavy
+development.
+<br/><br/><br/>
+</li>
+
+<li>
+<b>LightType</b>
+&nbsp;[<a href="tomslib/tomslib.tgz">Download</a>]
+&nbsp;[<a href="tomslib/doc/">API Documentation</a>]
+<br/><br/>Includes a Euphoria-like type system, an implementation of 
+interface contracts, and a few other additional related standard class modifications.
+Useful modification Classes and Modules for Ruby itself,
+such as #to_b for most classes to convert to true or false,
+extra methods to NilClass so you get default values for things
+like #to_f rather then an error, and a few others.
+<br/><br/><br/>
+</li>
+
+<li><b>YAML/VIM</b>
+&nbsp;[<a href="yamlvim/yamlvim.tgz">Download</a>]
+&nbsp;[<a href="yamlvim/README">README</a>]
+<br/><br/>YAML.VIM is a collection of scripts implemented in vim script and ruby.
+Currenlty there are two scripts: a pury vim script for yaml syntax highlighting,
+and ruby script (with a vim loader script) for alphabetically sorting map sequences.
+These script are about 50% complete but work fairly well as they are.
+*Special thanks to Dmitry Borodaenko and Igor Vergeichik (Ihar Viarheichyk?).
+<br/><br/><br/>
+</li>
+
+<li>
+<b>XMLToolKit</b>
+&nbsp;[<a href="xmltoolkit/xmltoolkit.tgz">Download</a>]
+&nbsp;[<a href="xmltoolkit/doc/">API Documentation</a>]
+&nbsp;[<a href="xmlproof/xmlproof.html">xml:Proof Documentation</a>]
+&nbsp;[<a href="xmlproof/xmlproof-spec.html">xml:Proof Specification</a>]
+&nbsp;[<a href="xmltailor/xmltails.html">xml:Tails Specification</a>]
+<br/><br/>Collection XML tools.
+I've now gathered all my XML work into a single library set.
+These tools are at various stages of completion. 
+This library includes an assortment of tools:
+<br/><br/><br/>
+
+<ul>
+
+  <li><b>PrettyXML</b> -
+  PrettyXML is a pretty printer for XML/XHTML. It has definable indentation
+  and makes for a good demonstration of REXML's stream parser, which is required.
+  <br/><br/><br/>
+  </li>
+
+  <li><b>REREXML</b> -
+  REREXML adds a few extra features to REXML, like absolute xpaths, both relative and indexed,
+  and a parser for Namespace and Schema processing instructions (non-standard).
+  <br/><br/><br/>
+  </li>
+
+  <li><b>XMLProof/Ruby</b> -
+  An implementation of xml:Proof, an alternate XML schema language. xml:Proof has more features
+  and is easier to use than any other schema language out there. Have your doubts? Can your schema language
+  validate content based on its alphabetical order? Can your schema language require two attributes and
+  three elements be present if any one of them is, even though they appear is vastly different
+  sections of the document? Can your schema language validate content against Regular Expressions?
+  These are just a few of the things xml:Proof can do.
+  <br/><br/><br/>
+  </li>
+
+  <li><b>XMLTailor/Ruby</b> -
+  An implementation of xml:Tails, an alternate XML stylesheet transformation language.
+  xml:Tails is a tag attribute language for scripting languages. This implementation is obviously
+  for use with Ruby, but implementations could be made for other lanuages. It it perfect for Web Developers
+  who need to keep a distinct seperation between WYSIWYG Web design and underlying scripting logic.
+  It also makes a good substitue for ERuby, and other web templating systems.
+  Sorry, XMLTailor/Ruby is not yet available as it is alpha code and exceedingly slow, although is does work.
+  Hopefully I can speed it up enough to be of reasonable use some time soon.
+  <br/><br/><br/>
+  </li>
+  
+  <li><b>SQLiX</b> -
+  SQLiX is descendent of XSQL, which you may have read about in
+  the Ruby's Developers Guide. SQLiX makes adavances over XSQL by allowing 
+  referenced sub-records to be imported into the generated XML very easily.
+  It also includes XiSQL, providing the reverse process of updating, inserting,
+  and deleting properly formed XML documents against the database.
+  (Note: This is an outcropping of Jigsaw, which turned out to be infeasible.)
+  <br/><br/><br/>
+  </li>
+
+</ul>
+
+<br/>
+</li>
+
+<li>
+<b>Jigsaw</b>
+&nbsp;[<a href="jigsaw/jigsaw.tgz">Download</a>]
+&nbsp;[<a href="jigsaw/doc/">API Documentation</a>]
+<br/><br/>Jigsaw is an application framework
+for creating database and/or web applications.
+<br/><br/><br/>
+
+<ul>
+
+  <li><b>DBIze</b> -
+  Behold! The power of MIXINS! DBize is a mixin module which practically 
+  gives instant database connectivity to any object. Simply define a table in your
+  database with field names identical to the instance variables of your object,
+  add a couple very simple methods to it and mixin! Like magic, you are blessed with
+  methods to load, insert, update, and delete that object's data against the database.
+  <br/><br/><br/>
+  </li>
+
+  <li><b>CGIze</b> -
+  ...
+  <br/><br/><br/>
+  </li>
+
+  <li><b>MiterBox</b> -
+  MiterBox is a mutifaceted templating system, capable of generating GUI's on demand.
+  Miter uses ASCII Pictoral Templates to model GUI layout. This makes if easy, quick and fun to 
+  create GUI forms. Currently, MiterBox is multifaceted, supporting a subset of capabilites for a number of GUI
+  toolkits, but all primary functionality is readily handled and there are simple means for extending the
+  generated layouts via Ruby script. Currently XHTML is supported, with Tk mostly funcitonal.
+  BUT the whole of it will soon be retrofit to only generate GUtopIa transacation view-models.
+  If anyone else wishes to have the current multifaceted version and possibly add support for other GUIs
+  (GTK+, QT, FXRuby, etc.) please let me know.
+  <br/><br/><br/>
+  </li>
+
+</ul>
+
+<br/>
+</li>
+
+<li><b>ONI</b>
+&nbsp;[<a href="oni/oni.tgz">Download</a>]
+&nbsp;[<a href="oni/doc/">API Documentation</a>]
+<br/><br/>ONI stands for Object Networked Interface.
+It is similiar to DRb and ROMP. But unlike them,
+ONI uses YAML to serialize objects. It is pre-alpha.
+<br/><br/><br/>
+</li>
+
+<li><b>GUtopIa</b>
+&nbsp;[<a href="gutopia/gutopia.tgz">Download</a>]
+&nbsp;[<a href="gutopia/doc/">API Documentation</a>]
+<br/><br/>NOTE: GUtopIa is undergoing a massive overhaul, so who knows how much of the below applies.<br/>
+GUtopIa is a GUI meta-API for the Ruby scripting language. We say "meta" because it presents a single common API
+to the developer regardless of the underlying base API. In sum, GUtopIa intends to provide a best-of-all-worlds GUI toolkit
+to the Ruby community of programmers, meeting all requirements of such a toolkit: cross-platform compatability,
+native platform integration, ease of coding with good Seperation Of Concerns and opertaing on the Principle of Least Suprise,
+international font support, as well as a good dose of flexibity and speed. There are two major divisions to the GUtopIa meta-API,
+tentatively nicked name Biz and Joy. Biz uses wxWindows as a backend GUI API, while Joy uses the ClanLib Game SDK.
+Both are open source projects in their own right. The common meta-API as presented to the developers is desgined around
+a Dual Channel Model-View-Control architecture. This structure provides optimal SOC. The core-application (Model)
+need not be necessarily altered in anyway in order to give it a user-interface (View). The two are coorelated by pairs
+of intermediary conduits, which are actually dynamically generated methods in the ruby source.
+These shuttle state changes "automagically" between core-application and user-interface (Controller).
+The GUtopIa project is an offspring of the original RougeProject, a part of FreeRIDE and continues in its footsteps
+with the goal of bringing GUI programming to new heights that only a languge like Ruby can provide.
+<br/><br/><br/>
+</li>
+
+</ul>
+
+
+<h1 style="font-family: arial; color: red; font-size: 26pt">&nbsp;* TOPLEVEL</h1>
+
+<ul>
+
+<li><b>REXML</b>
+&nbsp;[<a href="http://www.germane-software.com/software/rexml/">Homepage</a>]
+&nbsp;[<a href="http://www.germane-software.com/software/rexml/docs/tutorial.html">Tutorial</a>]
+&nbsp;[<a href="http://www.germane-software.com/software/rexml/doc/index.html">API Docs</a>]
+&nbsp;[<a href="http://www.germane-software.com/software/archives/rexml_2.2.2.tgz">Download Stable</a>]
+<br/><br/>REXML is an XML processor for the language Ruby. REXML is conformant (passes 100% of the Oasis non-validating tests), and includes full XPath support. It is reasonably fast, and is implemented in pure Ruby. Best of all, it has a clean, intuitive API.
+<br/><br/><br/>
+</li>
+
+<li><b>PL/Ruby</b>
+&nbsp;[<a href="http://moulon.inra.fr/ruby/plruby.html">Homepage</a>]
+&nbsp;[<a href="ftp://moulon.inra.fr/pub/ruby/">FTP Download</a>]
+<br/><br/>PL/Ruby is a loadable procedural language for the Postgres database system that enable the Ruby language to create functions and trigger procedures.
+<br/><br/><br/>
+</li>
+
+<li><b>YAML4R</b>
+&nbsp;[<a href="http://yaml4r.sourceforge.net/">Homepage</a>]
+<br/><br/>YAML4R is a Ruby implementatin of YAML.
+<br/><br/><br/>
+</li>
+
+</ul>
+
+-->
+

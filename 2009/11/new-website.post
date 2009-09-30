@@ -1,0 +1,24 @@
+---
+title  : New Website
+author : trans
+tags   : website
+date   : 2009-08-24
+
+--- markdown
+
+# Rubyworks is up!
+
+Hey! Rubyworks is up and running. Got this nifty new blog thanks to [Brite](http://proutils.github.com/brite), a home grown static
+website and weblog construction kit.
+
+It's a bit ironic. I am using a site style that I used way back in 2003 for my first ruby-oriented website. That site (transami.net/ruby)
+has long been deprecated, so it's pretty cool to see it resurected today.
+
+In any case, this website is dedicated to many of the awesome Ruby project I've developed and maintained over the years. Combined with
+the ProUtils and Death (ie. my scrap projects) collections, they conver my complete works in Rubydom. Most of the projects are in good
+working order. In fact, I've only let a couple non-useable projects into the collection, in their case because I would like to get them
+working soon. All the rest good to go, some in relatviely perfect order, others still a little rough around the edges, but all usable.
+
+As time wears on I'll blog about the various projects here (now that I have thsi spiffy new blog). If you would like to discuss any
+of these projects please hop over the the [Google Group](http://googlegroups.com/group/rubyworks-mailinglist) I setup just for that purpose.
+
