@@ -10,7 +10,7 @@ stencil : rhtml
   @projects = dirs.map{ |d| puts "Load: #{d}"; prj = POM::Project.new(d) ; prj.metadata.assert_valid ; prj }
 %>
 
-<div class="title">Projects.inspect</div>
+<div class="title">Self.inspect</div>
 
 <% @projects.sort{ |a,b| a.metadata.package <=> b.metadata.package }.each do |prj| %>
   <div class="links" style="float: right; padding-top: 30px;">
