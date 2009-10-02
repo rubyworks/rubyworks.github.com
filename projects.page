@@ -7,18 +7,30 @@ stencil : rhtml
 <%
   require 'pom'
   dirs = Dir['../*'] - ['../rubyworks.github.com', '../opendsl', '../rbsystem']
-  @projects = dirs.map{ |d| puts "Load: #{d}"; prj = POM::Project.new(d) ; prj.metadata.assert_valid ; prj }
+  @projects = dirs.map do |d|
+    puts "Load: #{d}" if $DEBUG
+    prj = POM::Project.new(d)
+    prj.metadata.assert_valid
+    prj
+  end
 %>
 
 <div class="title">Self.inspect</div>
 
+<br/>
+
 <% @projects.sort{ |a,b| a.metadata.package <=> b.metadata.package }.each do |prj| %>
-  <div class="links" style="float: right; padding-top: 30px;">
-    <a href="<%= prj.metadata.package %>/">Website</a>
-    <a href="http://github.com/rubyworks/<%= prj.metadata.package %>/tree/master">Development</a>
+  <div style="border: 1px solid #ccc; padding: 20px;">
+    <div class="links" style="float: right;">
+      <a href="http://github.com/rubyworks/<%= prj.metadata.package %>/tree/master">
+        <img src="<%= root %>assets/images/octocat48.jpg" />
+      </a>
+    </div>
+    <h1 style="margin: 0 0 10px 0;">
+      <a href="<%= prj.metadata.package %>"><%= prj.metadata.title %></a>
+    </h1>
+    <%= prj.metadata.description %>
   </div>
-  <h1><%= prj.metadata.title %></h1>
-  <%= prj.metadata.description %>
   <br/><br/>
 <% end %>
 

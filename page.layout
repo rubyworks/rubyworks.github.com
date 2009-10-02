@@ -11,7 +11,11 @@ stencil: liquid
   <link REL="SHORTCUT ICON" HREF="{{ root }}assets/images/ruby_1.jpg" />
 
   <style>
-    body  { font-family: monospace; font-size: 10pt; margin: 0; padding: 0; background: url({{ root }}assets/images/bg.jpg) 0 -10px repeat-x #dfdfff; }
+    body  { font-family: arial; font-size: 11pt; margin: 0; padding: 0; background: url({{ root }}assets/images/bg.jpg) 0 -10px repeat-x #dfdfff; }
+
+       a  { text-decoration: none; }
+
+     img  { border: none; }
 
       li  { font-family: monospace; font-size: 10pt; padding-bottom: 30px; }
 
