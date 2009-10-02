@@ -15,6 +15,8 @@ stencil: liquid
 
        a  { text-decoration: none; }
 
+       a:hover  { text-decoration: underline; }
+
      img  { border: none; }
 
       li  { font-family: monospace; font-size: 10pt; padding-bottom: 30px; }
