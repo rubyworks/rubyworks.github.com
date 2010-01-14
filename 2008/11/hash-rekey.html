@@ -69,31 +69,63 @@
 
 <div class="page">
 
-  <div class="title"><a href="">New Website</a></div>
+  <div class="title"><a href="">Facets Hash#rekey</a></div>
 
-  <h1>Further Proof that Ruby Works</h1>
+  <p>This is the first in a series of posts in which I plan to introduce my fellow Rubyists to the plethora or goodness that is <a href="http://facets.rubyforge.org">Ruby Facets</a>.</p>
 
-<p>Recently I set out to migrate most of my work from Rubyforge to GitHub, in so doing I needed a umbrella account to place all these
-wonderfully chewy morsals. In deliberating a name for the account I recollected the very first Ruby website I had ever created back
-in 2002. It was called Ruby Works and hosted at http://transami.net/ruby. It has long been defunct, but it seems fitting to bring my
-Ruby career to a close by coming full circle. And so Ruby Works was reborn.</p>
+<p>Ruby Facets has been in development for several years, starting out as a rather rag-tag collection general purpose Ruby scripts, and has evolved into the latest release, version 2.5.0, which has reached a nice level of maturity --getting pretty close, I suppose one could say, to that stately realm of "enterprise-ready".</p>
 
-<p>In the process of this migration I made myself this nifty new blog built with <a href="http://proutils.github.com/brite">Brite</a>, my home grown
-static website and weblog construction kit. Actually, it's more than just a "Ruby Works" name that I am revitializing. I'm reusing the
-orginal stylesheet for that orginal site too (albeit well modifed at this point).</p>
+<p>Every few weeks or so, I'll pick a library or particular extension and expound upon it. While the main intent of this series is to let others know what Facets makes available to them. I will also use it as a platform to further improve and polish Facets. So please, feel free to comment, make suggestions and point out alternatives, so that Facets might better serve the Ruby community in the future.
 
-<p>In any case, this website is dedicated to the many awesome Ruby projects I've had the privilege to develop and maintain over the years.
-Combined with <a href="http://proutils.github.com">ProUtils</a> and <a href="http://death.rubyforge.org">Death</a> --my scrap projects, these cover my complete
-works in the Rubydom. Most of the projects are in good working order. In fact, I've only let a couple non-useable projects into the
-collection, in their case because I would like to get them working soon. All the rest good to go, some in relatviely perfect order,
-others still a little rough around the edges, but all usable.</p>
+Okay, now to the meat of this edition...
 
-<p>As time wears on I'll blog about these various projects here (now that I have this spiffy new blog). If you would like to discuss any
-of these projects please hop over the the <a href="http://googlegroups.com/group/rubyworks-mailinglist">Google Group</a>. I setup the group
-just for that purpose.</p>
+I decided to start with something quite simple, but very useful, homogenizing hash keys. Currently in Ruby, this requires code like:</p>
 
 
-  <small>Written by trans, 2009-08-24</small>
+<div class="CodeRay">
+  <div class="code"><pre>
+  new_hash = {}
+  old_hash.each <span style="color:#080;font-weight:bold">do</span> |k,v|
+    k = k.to_sym
+    new_hash[k] = v
+  <span style="color:#080;font-weight:bold">end</span>
+
+</pre></div>
+</div>
+
+<p>Of course, that can be golfed-down a bit, but I wanted to spell it out for clarity. In this particular example, I converted all the keys to symbols (<code>to_sym</code>). Along with strings, that is one of the most commonly needed key conversions. Common enough in fact that Rails' ActiveSupport library provides <code>symbolize_keys</code> and an alias <code>#to_options</code>. It's also provides <code>stringify_keys</code>. Facets offers these methods too, since they are certainly so well known by now. However, Facets provides and recommends a more versatile method, <code>rekey</code>. With it the above example becomes as simple as:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+  old_hash.rekey
+
+</pre></div>
+</div>
+
+<p><code>Hash#rekey</code> actually takes a block, but if no block is given, as in the above, it defaults to symbol conversion. If we wanted to convert the keys to strings instead, the magic of Symbol#to_proc makes that as simple as:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+  old_hash.rekey(&amp;<span style="color:#A60">:to_s</span>)
+
+</pre></div>
+</div>
+
+<p>And lastly, of course, we could get crazy with it and make every key a "Turk".</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+  old_hash.rekey{ |k| <span style="color:#036;font-weight:bold">Turk</span>.new(k) }
+
+</pre></div>
+</div>
+
+<p>I don't know about you, but I like turk-keys. Oh, the pun! It hurts! :)</p>
+
+<p>Happy Thanksgiving.</p>
+
+
+  <small>Written by trans, 2008-11-23</small>
 
   <ul class="posts">
     

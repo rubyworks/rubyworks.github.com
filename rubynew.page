@@ -35,6 +35,25 @@ Will blow up in our face becuase SomeSpace is not defined. Have you ever run int
 of requiring a library that uses the namespace defined by the file you requiring from? 
 Frustratingly you have to put the requires at the bottom of the script.
 
+# @ and @@ as Hashes
+
+An objects colleection of instance varaibles is little more than a hash. And at times it's
+convenient to deal with it as such. But this requires many little tricks using instance_variable_get
+and so forth. Why not allow instance varaibles the full hash behavior.
+
+--- coderay.ruby
+
+    class Foo
+      def same?
+        @[:a] == @a
+      end
+
+      def ivars
+        @.map{ |k,v| k }
+      end
+    end
+
+--- markdown
 
 # Method and Variable Isomorphics
 
@@ -77,19 +96,19 @@ To follow through with this $ becomes syntax sugar for the new unversally availa
 
 --- markdown
 
-We prefer that self be the default receiver wheneve a receiver is not specified.
+I prefer that self be the default receiver whenever a receiver is not specified.
 But we must consider the case of ambiguity between this and locals.
 The simplist way is probably to define % as synatical sugar for a local object attributed to blocks (i.e. Proc/Method).
 This still bares consideration.
 
 
-# String will function as if an Array of Characters
+# String as an Array of Characters
 
-The String class will have its method definitions stricty coorrespond to those of the Array class,
-in all places applicable.
+Conceptually, a String is an array of characters. So why wouldn't we want a Character class and 
+a String as an Array of these?
 
 
-# %l and %L
+# Margin Controlled Strings using %l and %L
 
 Respective to %q and %Q, will provide a margin controlled literal string constructor.
 

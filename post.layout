@@ -21,5 +21,13 @@ layout : page
     {% endif %}
   </ul>
 
+  <script>
+  var idcomments_acct = '1e97cd0a25f01bb50181e727255ddffb';
+  var idcomments_post_id;
+  var idcomments_post_url;
+  </script>
+  <span id="IDCommentsPostTitle" style="display:none"></span>
+  <script type='text/javascript' src='http://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+
 </div>
 
