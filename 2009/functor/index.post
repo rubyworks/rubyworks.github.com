@@ -80,6 +80,8 @@ Let's consider another use, perhaps one a little more charming this time.
 
   [1,2,3].all + 3  #=> [4,5,6]
 
+--- markdown
+
 There are many other similar uses for Functors. Just as Enumerator opens up a
 great deal of convenience and conciseness for Enumerable methods, Functor can
 do the same for methods generally.
