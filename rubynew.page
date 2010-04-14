@@ -9,17 +9,19 @@ stencil : rhtml
 --- markdown
 
 I love Ruby. It is no doubt the best programming language I've had the priviledge to write-in.
-Yet there are some aspect to it that I feel can be impoved. This section outlines an evolving
-set of notions about what I would like to see changed. Perhaps they will find there way into
-Ruby one day; perhaps they will end up defining a new programming language based on Ruby, or
-perhaps they will just sit here on this page. In either case, here they be...
+Yet there are some aspects that I feel can be imporved. I guess that's a sentiment of any
+programmer. This section outlines an evolving set of notions about what I would like to see
+changed. Perhaps they will find there way into Ruby one day; perhaps they will end up defining
+a new programming language based on Ruby, or perhaps, more likely, they will just keep sitting
+here on this page ;) In any case, do me a favor and don't judge them too harshly. Some are little
+more than thinking aloud.
 
 # Class/Module Unification
 
-I beleive the distinciton between class and module in Ruby, is completely disadvantgeous
+I beleive the distinciton between class and module in Ruby is completely disadvantgeous
 to the language. For starters, the distinciton is arbitrary. There is literally conditional
 code in Ruby that prevents the instaniation of a module or including a class. Remove these
-conditions and Ruby will continue to work regardless.
+conditions and Ruby will basically continue to work regardless.
 
 In addition, the distinction makes it impossible for our programs to use namespace freely.
 
@@ -31,15 +33,17 @@ In addition, the distinction makes it impossible for our programs to use namespa
 
 --- markdown
 
-Will blow up in our face becuase SomeSpace is not defined. Have you ever run into the issue 
-of requiring a library that uses the namespace defined by the file you requiring from? 
-Frustratingly you have to put the requires at the bottom of the script.
+Will blow up in your face if SomeSpace is not defined. If classes and modules were effectively
+the same it would not longer matter, and SomeSpace could be auto-instanitated.
 
-# @ and @@ as Hashes
+Have you ever run into the issue of requiring a library that uses the namespace defined by the
+file you requiring from? Frustratingly you have to put the requires at the bottom of the script.
 
-An objects colleection of instance varaibles is little more than a hash. And at times it's
-convenient to deal with it as such. But this requires many little tricks using instance_variable_get
-and so forth. Why not allow instance varaibles the full hash behavior.
+# Using @ and @@ like a Hash
+
+An object's collection of instance variables is essentially a Hash. And at times it's
+convenient to deal with it as such. But this requires many little tricks using
+instance_variable_get and friends. Why not allow instance variables the full Hash behavior?
 
 --- coderay.ruby
 
@@ -57,15 +61,15 @@ and so forth. Why not allow instance varaibles the full hash behavior.
 
 # Method and Variable Isomorphics
 
-A Method definition will amount to no more than assigning a Proc to a variable.
+It would be nice if method definitions amounted to little more than assigning a Proc to a variable.
 Thus a Proc and a Method are no longer distinct, and the #call method becomes generally unnecessary.
-Also the kernel method Proc itself is depricated and { } always stand for a proc/method.
+Also the kernel method Proc itself could be depricated and -> { } always stand for a proc/method.
 For example:
 
 --- coderay.ruby
 
     class Foo
-      bar = { |x| puts x }
+      bar = -> { |x| puts x }
     end
 
 --- markdown
@@ -82,31 +86,34 @@ Is the same as:
 
 --- markdown
 
-# Syntax Sugar $, @ and @@
+# Method definitions for $, @ and @@
 
-Given the above, class variables can be accessed just as class methods, i.e. using the class name as a prefix.
-@@ then becomes no more the syntax sugar meaning just that. Likewise @ becomes no more than syntax sugar for self.
-To follow through with this $ becomes syntax sugar for the new unversally available toplevel object.
+One thing Ruby lacks that could be useful in some case are class-private methods. These
+methods would not visible outside their immediate class. Of course the difficulty is
+how to notate these. At one point in occured to me that @ provided the perfect notation.
 
 --- coderay.ruby
 
-    $x == toplevel.x
-    @@x == ClassName.x (in class context)
-    @x == self.x (in object context)
+  class X
+    def @x
+      "I can only be seen by X."
+    end
+    def show
+      @x
+    end
+  end
 
 --- markdown
 
-I prefer that self be the default receiver whenever a receiver is not specified.
-But we must consider the case of ambiguity between this and locals.
-The simplist way is probably to define % as synatical sugar for a local object attributed to blocks (i.e. Proc/Method).
-This still bares consideration.
+Naturally this leads one to the same conclusion for @@ and $. Global methods... interesting.
 
+--- coderay.ruby
 
-# String as an Array of Characters
+  def $intersting
+    "Down with global lambdas!"
+  end
 
-Conceptually, a String is an array of characters. So why wouldn't we want a Character class and 
-a String as an Array of these?
-
+--- markdown
 
 # Margin Controlled Strings using %l and %L
 
@@ -126,21 +133,36 @@ Like %q and %Q other deliminators can be used.
 
 # NackClass
 
-A NackClass is the same as NilClass except for any method it does not recognize, it return s itself.
-(I use to call this NullClass, but "nack" seems a more fitting term.)
+A NackClass is the same as NilClass except for any method it does not recognize, it return
+the instance of itself.
+
+--- coderay.ruby
+
+  nack.nack.nack.nack  #=> nack
+
+--- markdown
+
+Note I used to call this <code>NullClass</code>, but "nack" seems a little more fitting
+a term. I can go either way though.
 
 
-# Boolean
+# Object's can be True or False
 
-If we had a tru Boolean class, with a internal true or false state, ...
-
-
-# Infinity
-
-Err.. Where is Infinity?
+All Ruby objects except <code>nil</code> and <code>false</code> always evaluate to true
+in a conditional. It would be quite powerful if we could override this behavior.
+In fact it would allow us to define the previously mentioned NackClass ourselves.
 
 
 # DateTime
 
-An improved class for dealing with dates and times that will incorporate the current Time, Date and ParseDate classes.
+Oh lord, this is really a biggy. Ruby's current handling of Dates and Times is all over the map. We have Date,
+Time, DateTime, ParseDate, and more, not to mention all the other common extensions running around
+out there. Ruby needs an improved class that incorporates them all. If memory servers there a library out there 
+called <code>Chronos</code> that might do the trick. 
+
+# Infinity
+
+Err.. Where is a real Infinity?
+
+I'll end it there with that little joke.
 

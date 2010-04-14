@@ -5,32 +5,10 @@
   <title>Ruby Works</title>
 
   <link REL="SHORTCUT ICON" HREF="assets/images/ruby_1.jpg" />
+  <LINK REL=StyleSheet HREF="assets/style.css" TYPE="text/css" MEDIA=screen>
 
-  <style>
-    body  { font-family: arial; font-size: 11pt; margin: 0; padding: 0; background: url(assets/images/bg.jpg) 0 -10px repeat-x #dfdfff; }
-
-       a  { text-decoration: none; }
-
-       a:hover  { text-decoration: underline; }
-
-     img  { border: none; }
-
-      li  { font-family: monospace; font-size: 10pt; padding-bottom: 30px; }
-
-     .nav { font-family: arial;  height: 365px; border-left: 1px solid #ccc; border-right: 1px solid #ccc; }
-
-     .nav a { font-size: 18px; font-weight: bold; line-height: 36px; padding: 0 6px; text-decoration: none; }
-
-   .links a { color: #aaa; font-size: 0.9em; }
-
-   .title { font-family: arial; color: red; font-size: 28pt; height: 64px; background: url(assets/images/ruby_1.jpg) no-repeat; padding-left: 64px; }
-
-   .title a { text-decoration: none; font-family: arial; color: red; font-size: 28pt; height: 64px; }
-
-   .title .date { font-size: 20pt; }
-
-   .footer { font-size: 10px; border-top: 1px solid #ccc; color: #999; }
-  </style>
+  <script type="text/javascript" src="assets/jquery.js"></script>
+  <script type="text/javascript" src="assets/rubyworks.js"></script>
 </head>
 
 <body>
@@ -38,33 +16,32 @@
 <div style="margin: 0 auto; width: 960px;">
 
 <!-- Title -->
-<div class="nav" style="background: url(assets/images/serpent.jpg) no-repeat; padding-left: 300px;">
+<div class="nav">
 
-  <div style="font-family: arial; font-size: 32pt; color: #ee0022;">
-    <br/>
-    <b>Ruby Works</b> <br/>
+  <table width="100%">
+  <tr>
+  <td class="nav-menu">
     <a href="index.html">Blog.read</a>
     <a href="projects.html">Self.inspect</a>
     <a href="rubynew.html">Ruby.new</a>
     <a href="http://github.com/rubyworks/">Github.com</a>
-  </div>
-   
-  <div style="margin-top: 40px;">
-    <FORM method="GET" action="http://www.google.com/groups" target="_blank">
+  </td>
+  <td class="search-box">
+    <FORM method="GET" action="http://www.google.com/group/ruby-talk-google/search?hl=en" target="_blank">
     <!-- Search Google -->
-    <A HREF="http://www.google.com/">
-    <IMG SRC="http://www.google.com/logos/Logo_25wht.gif" border="0" ALT="Google" align="absmiddle"></A>
-    <INPUT TYPE="text" name="q" size="25" maxlength="255" value="">
-    <input type="hidden" name="hl" value="en">
-    <input type="hidden" name="group" value="comp.lang.ruby">
-    <INPUT type="submit" name="btnG" VALUE="Search Ruby Talk">
+    <input type="text" name="q" size="25" maxlength="255" value="" class="search-input" />
+    <input type="hidden" name="hl" value="en" />
+    <input type="hidden" name="group" value="ruby-talk-google" />
+    <input type="submit" name="qt_g" VALUE="Search Ruby-Talk" />
     <!-- Search Google -->
     </FORM>
-  </div>
+  </td>
+  </tr>
+  </table>
 
 </div>
 
-<div style="padding: 20px; background: white;">
+<div style="padding: 30px; background: white;">
 
 
 
@@ -74,106 +51,111 @@
 <br/>
 
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
-      <a href="http://github.com/rubyworks/anise/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+      <a href="http://github.com/rubyworks/advisable/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="anise">Anise</a>
+      <a href="http://death.rubyforge.org/">Advisable</a>
+    </h1>
+    Add before, after and around advice in dynamic fashion.
+  </div>
+  <br/><br/>
+
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
+    <div class="links" style="float: right;">
+      <a href="http://github.com/rubyworks/anise/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
+      </a>
+    </div>
+    <h1 style="margin: 0 0 10px 0;">
+      <a href="http://rubyworks.github.com/anise">Anise</a>
     </h1>
     Anise is an annotations systems for the Ruby programming lanaguage.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/ansi/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="ansi">ANSI</a>
+      <a href="http://death.rubyforge.org/ansi">ANSI</a>
     </h1>
-    The ANSI project is a collection of ANSI code related libraries
-enabling ANSI code based colorization and stylization of output.
-It is very nice for beautifying shell output.
-
-This collection is based on a set of scripts spun-off from
-Ruby Facets. Include are Code (used to be ANSICode), Logger,
-Progressbar and String. In addition the library include
-Terminal which provides information about the current output
-device.
+    ANSI codes at your fingertips!
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
-      <a href="http://github.com/rubyworks/bicrypt/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+      <a href="http://github.com/rubyworks/association/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="bicrypt">Bicrypt</a>
+      <a href="http://death.rubyforge.org/">Association</a>
+    </h1>
+    General binary association allows one object to be
+associated with another. It has a variety of uses,
+link-lists, simple ordered maps and mixed collections,
+among them.
+  </div>
+  <br/><br/>
+
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
+    <div class="links" style="float: right;">
+      <a href="http://github.com/rubyworks/bicrypt/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
+      </a>
+    </div>
+    <h1 style="margin: 0 0 10px 0;">
+      <a href="http://rubyworks.github.com/bicrypt">Bicrypt</a>
     </h1>
     Simple two-way encryption class.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/binaryio/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="binaryio">BinaryIO</a>
+      <a href="http://rubyworks.github.com/binaryio/">BinaryIO</a>
     </h1>
-    Provides a BinaryIO class as well as a reusable mixin, BinaryIO::Readable, whuch
-is the heart of the BinaryIO class itself. The mixin solely depends one method,
+    Provides a BinaryIO class as well as a reusable mixin, BinaryIO::Readable, which
+is the heart of the BinaryIO class. The mixin solely depends one method, read(n),
+which must be defined in the class/module where the module is mixed.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/capsule/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="capsule">Capsule</a>
+      <a href="http://rubyworks.github.com/capsule">Capsule</a>
     </h1>
     Capsule is subclass of Module. It encapsulates an
 extenal script as a functions module.
-
-Capsule is based on Joel VanderWerf's Script class (script.rb).
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
-    <div class="links" style="float: right;">
-      <a href="http://github.com/rubyworks/cherry/tree/master">
-        <img src="assets/images/octocat48.jpg" />
-      </a>
-    </div>
-    <h1 style="margin: 0 0 10px 0;">
-      <a href="cherry">Cherry</a>
-    </h1>
-    Cherry is a Ruby-esque variation on E4X and jQuery. It can use
-either REXML or LibXML2 via LibXML-Ruby or Nokigiri as a backend,
-offering a choice between ease of installation vs. speed.
-  </div>
-  <br/><br/>
-
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/cliable/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="cliable">Cliable</a>
+      <a href="http://death.rubyforge.org">Cliable</a>
     </h1>
     The Cliable mixin is a very quick and and easy
 way to make almost any class usable via a command
@@ -184,74 +166,98 @@ passed to the method.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/crypt3/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="crypt3">Crypt3</a>
+      <a href="http://rubyworks.github.com/crypt3">Crypt3</a>
     </h1>
     Crypt3 is a pure ruby version of crypt(3),
 a salted one-way hashing of a password.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/cuts/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="cuts">Cuts</a>
+      <a href="http://rubyworks.github.com/cuts">Cuts</a>
     </h1>
     Cuts is an expiremental implementation of cut-based
 AOP for Ruby written in pure Ruby.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/english/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="english">English</a>
+      <a href="http://english.rubyforge.org">English</a>
     </h1>
-    English is a spin-off of Facets, collecting together all English
-language libraries together under a single unified project. The English
-project intends to provided a general purpose set of English-oriented 
-text manipulation and natural language processing Ruby libraries in one
-convenient package.
+    English is an general purpose English language processing library.
+It includes a number of useful libraries, such as inflect.rb, 
+similarity.rb, metaphone.rb, and so on.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/enumargs/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="enumargs">Enumargs</a>
+      <a href="http://rubyworks.github.com/enumargs">Enumargs</a>
     </h1>
     This is a simple reimplementation of the core Enumerable module
 to allow its methods to take and pass-on arbitrary arguments to the
-underlying
+underlying #each call. This library uses Enumerator and scans
+Enumerable so it can alwasy stay in sync.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
-      <a href="http://github.com/rubyworks/gutopia/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+      <a href="http://github.com/rubyworks/facets/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="gutopia">GUtopIa</a>
+      <a href="http://rubyworks.github.com/facets">Facets</a>
+    </h1>
+    Facets is the single largest collection of core extension methods
+and standard class additions available for the Ruby programming
+language.
+
+Premium Core Extensions and Standard Additions.
+Facets is a large collection of core extension methods
+and standard additions for the Ruby programming language.
+The core extensions are unique by virtue of thier atomicity.
+Methods are stored in small, tightly related collections,
+allowing for highly granular control of requirements.
+The modules include a variety of useful classes, mixins
+and microframeworks, from the Functor to a complete
+Annotations system.
+  </div>
+  <br/><br/>
+
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
+    <div class="links" style="float: right;">
+      <a href="http://github.com/rubyworks/gutopia/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
+      </a>
+    </div>
+    <h1 style="margin: 0 0 10px 0;">
+      <a href="">GUtopIa</a>
     </h1>
     GUtopIa is GUI framework for Ruby. It is an ultra-high level
 library designed to deal in general GUI concepts implemented
@@ -259,139 +265,146 @@ by any backend.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/htmlfilter/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="htmlfilter">HTMLFilter</a>
+      <a href="http://rubyworks.github.com/htmlfilter">HTMLFilter</a>
     </h1>
-    HTML Filter library can be used to sanitize and sterilize
-HTML. A good idea if you let users submit HTML in comments,
-for instance. 
-
-This library also include CssFilter. The CssFilter class will
-clean-up a cascading style sheet. It can be used to remove
-whitespace and most importantly remove urls.
+    Sanitize and sterilize HTML, also includes a CSS filter.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/inheritor/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="inheritor">Inheritor</a>
+      <a href="http://rubyworks.github.com/inheritor">Inheritor</a>
     </h1>
     Inheritor providse a means to store and inherit data via
 the class heirarchy. An inheritor creates two methods
-one named after the key that provides a reader. And one
-named after key! which provides the writer. (Because of
-the unique nature of inheritor the reader and writer
-can't be the same method.)
+one named after for the +key+ that provides a reader. And
+one named after +key!+ which provides the writer. Because
+of the unique nature of inheritor, the reader can not be used
+to modify the underlying store or it will not be passed on
+to the descendents.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/jam/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="jam">Jam</a>
+      <a href="http://rubyworks.github.com/jam">Jam</a>
     </h1>
-    Jam is a data-driven template system. Jam provides 100% seperation between
-logic and presentation.
-
-Jam can operate on the back-end via Ruby or on the front-end via Javascript/jQuery
-off-loading some of the back-end work load, while also providing 100% SOC
-(Seperation of Concern).
+    Jam is a data-driven template system.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
+    <div class="links" style="float: right;">
+      <a href="http://github.com/rubyworks/language/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
+      </a>
+    </div>
+    <h1 style="margin: 0 0 10px 0;">
+      <a href="http://rubyworks.github.com/language">Language</a>
+    </h1>
+    Language is a support library for other langauge libraries.
+While some of it's contents are prefectly usable on there own,
+most are generally intended to be subclassed and extended  by
+specific language modules, such as English.
+  </div>
+  <br/><br/>
+
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/lrucache/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="lrucache">LRUCache</a>
+      <a href="http://rubyworks.rubyforge.org/lrucache">LRUCache</a>
     </h1>
     A cache utilizing a simple LRU (Least Recently Used) policy.
-The items managed by this cache must respond to the
+The items managed by this cache must respond to the #key method.
+Attempts to optimize reads rather than inserts!
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
-      <a href="http://github.com/rubyworks/mask/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+      <a href="http://github.com/rubyworks/matriarch/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="mask">Mask</a>
-    </h1>
-    Mask provides a string utility for manipulating strings
-in logico-mathematical manner, ie. add, subtract,
-xor, etc.
-  </div>
-  <br/><br/>
-
-  <div style="border: 1px solid #ccc; padding: 20px;">
-    <div class="links" style="float: right;">
-      <a href="http://github.com/rubyworks/matter/tree/master">
-        <img src="assets/images/octocat48.jpg" />
-      </a>
-    </div>
-    <h1 style="margin: 0 0 10px 0;">
-      <a href="matter">Matter</a>
+      <a href="">Matriarch</a>
     </h1>
     GTraits is component system for Ruby that sections
 a class into a matrix of Method x Precidence.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/norma/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="norma">Norma</a>
+      <a href="http://rubyworks.github.com/norma">Norma</a>
     </h1>
     Norma (or Normal Ivy) is stealth ORM. It literally conects the
 entire Ruby instance system to a database.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
-      <a href="http://github.com/rubyworks/paramix/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+      <a href="http://github.com/rubyworks/og/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="paramix">Paramix</a>
+      <a href="">Og</a>
+    </h1>
+    Object Graph (Og) is a state of the art ORM system.
+Og serializes standard Ruby objects to Mysql, Postgres, Sqlite,
+KirbyBase, Filesystem and more.
+  </div>
+  <br/><br/>
+
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
+    <div class="links" style="float: right;">
+      <a href="http://github.com/rubyworks/paramix/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
+      </a>
+    </div>
+    <h1 style="margin: 0 0 10px 0;">
+      <a href="http://rubyworks.github.com/paramix">Paramix</a>
     </h1>
     Parametric Mixins provides parameters for mixin modules.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/path/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="path">Path</a>
+      <a href="http://rubyworks.github.com/path">Path</a>
     </h1>
     Path is all about paths. It's provides a reimplementation of the Ruby
 standard Pathname library, Path::Name, a superior globbing
@@ -399,59 +412,70 @@ facility, Path::List and an isolated shell-evironment, Path::Shell.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
-      <a href="http://github.com/rubyworks/pqueue/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+      <a href="http://github.com/rubyworks/plugin/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="pqueue">PQueue</a>
+      <a href="http://rubyworks.github.com/plugin">Plugin</a>
     </h1>
-    Priority queue with array based heap.
-
-A priority queue is like a standard queue, except that each inserted
-elements is given a certain priority, based on the result of the
-comparison block given at instantiation time. Also, retrieving an element
-from the queue will always return the one with the highest priority
-(see
+    Plugins is a general purpose plugin handler for Ruby.
+(Note: This has nothing to do with Rails plugins.)
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
-      <a href="http://github.com/rubyworks/r4x/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+      <a href="http://github.com/rubyworks/pqueue/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="r4x">R4X</a>
+      <a href="http://rubyworks.github.com/pqueue">PQueue</a>
+    </h1>
+    A priority queue is like a standard queue, except that each inserted
+elements is given a certain priority, based on the result of the
+comparison block given at instantiation time. Retrieving an element
+from the queue will always return the one with the highest priority.
+  </div>
+  <br/><br/>
+
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
+    <div class="links" style="float: right;">
+      <a href="http://github.com/rubyworks/r4x/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
+      </a>
+    </div>
+    <h1 style="margin: 0 0 10px 0;">
+      <a href="">R4X</a>
     </h1>
     R4X is an implementation of E4X for Ruby.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/radix/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="radix">Radix</a>
+      <a href="http://rubyworks.github.com/radix">Radix</a>
     </h1>
     Convert to and from any base.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/recorder/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="recorder">Recorder</a>
+      <a href="http://death.rubyforge.org/">Recorder</a>
     </h1>
     Recorder is similar to a method probe. It records everthing
 that happens to it, building an internal parse tree. You can then
@@ -460,85 +484,88 @@ utilize the parse tree.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/richunits/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="richunits">RichUnits</a>
+      <a href="http://tigerops.rubyforge.org/richunits">RichUnits</a>
     </h1>
-    RichUnits is simple units system based on Rich Kilmer's original
-time.rb script, in which different measures of time are represented
-as seconds via extensions to the Numeric class. Later, Ruby on Rails'
-ActiveSupport library adopted this script and expanded upon it.
-RichUnits borrows from their work and a few other renditions this code
-that have made the rounds to create a robust stand-alone version.
-
-Unique to RichUnits' rendition is the Duration class (inspired by Matthew
-Harris' version by the same name). Originally time measures were stored as
-integers representing seconds. The Duration class instead stores the seconds
-as an attribute and adds an optional segements property which can be used to
-select exactly how to segment up the time period (years, week, days, etc.).
+    Rich Kilmer's Unit system provides english-esque methods
+for working with common units, such as days and bytes and
+multiplers like kilo, or mega. It does so by reducing basic
+measures to a lower common denominator, such as seconds for
+time measures and bits for byte measures.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
+    <div class="links" style="float: right;">
+      <a href="http://github.com/rubyworks/rtals/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
+      </a>
+    </div>
+    <h1 style="margin: 0 0 10px 0;">
+      <a href="http://rubyworks.github.com/rtals">RTALS</a>
+    </h1>
+    RTALS is a Ruby variation on Zope Page Templates and it's TAL specification.
+It differs from ZPT in that it is specifically geared for use by Ruby.
+  </div>
+  <br/><br/>
+
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/snapshot/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="snapshot">Snapshot</a>
+      <a href="http://rubyworks.github.com/snapshot">Snapshot</a>
     </h1>
-    A lightweight single-depth object state capture.
-The
+    A lightweight single-depth object state capture. The take_snapshot
+method reads the object's state, which is generally it's collection
+of instance variables, and returns them in a hash. The state can be
+restored with #apply_snapshot.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/sparray/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="sparray">Sparray</a>
+      <a href="http://rubyworks.github.com/sparray/">Sparray</a>
     </h1>
-    SpArray is an implementation of a sparse array utilizing
-an underlying hash to store array elements. A sparse array
-is generally more efficient than a normal array when it
-contains many +nil+ entries.
-
-This library used to be known as HArray when it was part
-of Ruby Facets.
+    SpArray is an implementation of a sparse array using a hash to store the data.
+A sparse array is generally more efficient than a normal array when it contains many nil elements.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/stash/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="stash">Stash</a>
+      <a href="http://rubyworks.github.com/stash">Stash</a>
     </h1>
-    The Stash class is a Hash compatible class, but converts
-all keys to strings (or optionally symbols).
+    Stash is a Hash that has uniform keys.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/stick/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="stick">Stick - Scientific Code Kit</a>
+      <a href="http://stick.rubyforge.org">Stick</a>
     </h1>
     Stick is an comprehensive science library including a
 units system providing both SI units and web-updated
@@ -548,57 +575,101 @@ It also include a large set of real world contants, provided in
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
-      <a href="http://github.com/rubyworks/tracepoint/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+      <a href="http://github.com/rubyworks/strmask/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="tracepoint">Tracepoint</a>
+      <a href="http://rubyworks.github.com/strmask">String::Mask</a>
+    </h1>
+    String::Mask provides a kind-of string algebra
+useful for manipulating strings in in comparitive
+ways, eg. add, subtract, xor, etc.
+  </div>
+  <br/><br/>
+
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
+    <div class="links" style="float: right;">
+      <a href="http://github.com/rubyworks/tieclip/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
+      </a>
+    </div>
+    <h1 style="margin: 0 0 10px 0;">
+      <a href="">TieClip</a>
+    </h1>
+    
+  </div>
+  <br/><br/>
+
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
+    <div class="links" style="float: right;">
+      <a href="http://github.com/rubyworks/tracepoint/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
+      </a>
+    </div>
+    <h1 style="margin: 0 0 10px 0;">
+      <a href="http://rubyworks.github.com/tracepoint">TracePoint</a>
     </h1>
     A TracePoint is a Binding with the addition of event information.
 Among other things, it functions very well as the join-point for AOP.
-In practice it provides a better means than
+In practice it provides a better alternative to using #set_trace_func.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/typecast/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="typecast">Typecast</a>
+      <a href="http://rubyworks.github.com/typecast">Typecast</a>
     </h1>
-    Provides a generic simple type conversion utility. All the ruby core
-conversions are available by default.
+    Provides a complete double-dispatch type conversion system.
+All the ruby core conversions are available by default.
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
-      <a href="http://github.com/rubyworks/xdg/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+      <a href="http://github.com/rubyworks/vanunits/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="xdg">XDG</a>
+      <a href="http://rubyworks.github.com/vanunits">VanUnits</a>
+    </h1>
+    VanUnits is a units system providing both SI units and web-updated
+currency units, via a very easy to use method-based interface.
+It also include a large set of real world contants, provided in
+"m kg s" and "cm kg s" measures.
+  </div>
+  <br/><br/>
+
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
+    <div class="links" style="float: right;">
+      <a href="http://github.com/rubyworks/xdg/tree/master">
+        <img src="assets/images/octocat48.jpg" height="32px" />
+      </a>
+    </div>
+    <h1 style="margin: 0 0 10px 0;">
+      <a href="http://xdg.rubyforge.org">XDG</a>
     </h1>
     XDG provides a module for supporting the XDG Base Directory Standard.
 See: http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html
   </div>
   <br/><br/>
 
-  <div style="border: 1px solid #ccc; padding: 20px;">
+  <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/xoxo/tree/master">
-        <img src="assets/images/octocat48.jpg" />
+        <img src="assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="xoxo">XOXO</a>
+      <a href="http://rubyworks.github.com/xoxo">XOXO</a>
     </h1>
     XOXO is a Ruby XOXO parser and generator. It provides
 a Ruby API similar to Marshal and YAML (though more
@@ -608,208 +679,6 @@ suitable for embedding in (X)HTML, Atom, RSS, and arbitrary XML.
   </div>
   <br/><br/>
 
-
-
-<!--
-
-<li><b>Baker</b>
-&nbsp;[<a href="http://baker.rubyforge.org">Website</a>]
-&nbsp;[<a href="http://rubyforge.org/projects/baker/">Development</a>]
-<br/><br/>Baker is a 100% Ruby implementation of a source-based package
-management system for unix-like operating systems. It is still under heavy
-development.
-<br/><br/><br/>
-</li>
-
-<li>
-<b>LightType</b>
-&nbsp;[<a href="tomslib/tomslib.tgz">Download</a>]
-&nbsp;[<a href="tomslib/doc/">API Documentation</a>]
-<br/><br/>Includes a Euphoria-like type system, an implementation of 
-interface contracts, and a few other additional related standard class modifications.
-Useful modification Classes and Modules for Ruby itself,
-such as #to_b for most classes to convert to true or false,
-extra methods to NilClass so you get default values for things
-like #to_f rather then an error, and a few others.
-<br/><br/><br/>
-</li>
-
-<li><b>YAML/VIM</b>
-&nbsp;[<a href="yamlvim/yamlvim.tgz">Download</a>]
-&nbsp;[<a href="yamlvim/README">README</a>]
-<br/><br/>YAML.VIM is a collection of scripts implemented in vim script and ruby.
-Currenlty there are two scripts: a pury vim script for yaml syntax highlighting,
-and ruby script (with a vim loader script) for alphabetically sorting map sequences.
-These script are about 50% complete but work fairly well as they are.
-*Special thanks to Dmitry Borodaenko and Igor Vergeichik (Ihar Viarheichyk?).
-<br/><br/><br/>
-</li>
-
-<li>
-<b>XMLToolKit</b>
-&nbsp;[<a href="xmltoolkit/xmltoolkit.tgz">Download</a>]
-&nbsp;[<a href="xmltoolkit/doc/">API Documentation</a>]
-&nbsp;[<a href="xmlproof/xmlproof.html">xml:Proof Documentation</a>]
-&nbsp;[<a href="xmlproof/xmlproof-spec.html">xml:Proof Specification</a>]
-&nbsp;[<a href="xmltailor/xmltails.html">xml:Tails Specification</a>]
-<br/><br/>Collection XML tools.
-I've now gathered all my XML work into a single library set.
-These tools are at various stages of completion. 
-This library includes an assortment of tools:
-<br/><br/><br/>
-
-<ul>
-
-  <li><b>PrettyXML</b> -
-  PrettyXML is a pretty printer for XML/XHTML. It has definable indentation
-  and makes for a good demonstration of REXML's stream parser, which is required.
-  <br/><br/><br/>
-  </li>
-
-  <li><b>REREXML</b> -
-  REREXML adds a few extra features to REXML, like absolute xpaths, both relative and indexed,
-  and a parser for Namespace and Schema processing instructions (non-standard).
-  <br/><br/><br/>
-  </li>
-
-  <li><b>XMLProof/Ruby</b> -
-  An implementation of xml:Proof, an alternate XML schema language. xml:Proof has more features
-  and is easier to use than any other schema language out there. Have your doubts? Can your schema language
-  validate content based on its alphabetical order? Can your schema language require two attributes and
-  three elements be present if any one of them is, even though they appear is vastly different
-  sections of the document? Can your schema language validate content against Regular Expressions?
-  These are just a few of the things xml:Proof can do.
-  <br/><br/><br/>
-  </li>
-
-  <li><b>XMLTailor/Ruby</b> -
-  An implementation of xml:Tails, an alternate XML stylesheet transformation language.
-  xml:Tails is a tag attribute language for scripting languages. This implementation is obviously
-  for use with Ruby, but implementations could be made for other lanuages. It it perfect for Web Developers
-  who need to keep a distinct seperation between WYSIWYG Web design and underlying scripting logic.
-  It also makes a good substitue for ERuby, and other web templating systems.
-  Sorry, XMLTailor/Ruby is not yet available as it is alpha code and exceedingly slow, although is does work.
-  Hopefully I can speed it up enough to be of reasonable use some time soon.
-  <br/><br/><br/>
-  </li>
-  
-  <li><b>SQLiX</b> -
-  SQLiX is descendent of XSQL, which you may have read about in
-  the Ruby's Developers Guide. SQLiX makes adavances over XSQL by allowing 
-  referenced sub-records to be imported into the generated XML very easily.
-  It also includes XiSQL, providing the reverse process of updating, inserting,
-  and deleting properly formed XML documents against the database.
-  (Note: This is an outcropping of Jigsaw, which turned out to be infeasible.)
-  <br/><br/><br/>
-  </li>
-
-</ul>
-
-<br/>
-</li>
-
-<li>
-<b>Jigsaw</b>
-&nbsp;[<a href="jigsaw/jigsaw.tgz">Download</a>]
-&nbsp;[<a href="jigsaw/doc/">API Documentation</a>]
-<br/><br/>Jigsaw is an application framework
-for creating database and/or web applications.
-<br/><br/><br/>
-
-<ul>
-
-  <li><b>DBIze</b> -
-  Behold! The power of MIXINS! DBize is a mixin module which practically 
-  gives instant database connectivity to any object. Simply define a table in your
-  database with field names identical to the instance variables of your object,
-  add a couple very simple methods to it and mixin! Like magic, you are blessed with
-  methods to load, insert, update, and delete that object's data against the database.
-  <br/><br/><br/>
-  </li>
-
-  <li><b>CGIze</b> -
-  ...
-  <br/><br/><br/>
-  </li>
-
-  <li><b>MiterBox</b> -
-  MiterBox is a mutifaceted templating system, capable of generating GUI's on demand.
-  Miter uses ASCII Pictoral Templates to model GUI layout. This makes if easy, quick and fun to 
-  create GUI forms. Currently, MiterBox is multifaceted, supporting a subset of capabilites for a number of GUI
-  toolkits, but all primary functionality is readily handled and there are simple means for extending the
-  generated layouts via Ruby script. Currently XHTML is supported, with Tk mostly funcitonal.
-  BUT the whole of it will soon be retrofit to only generate GUtopIa transacation view-models.
-  If anyone else wishes to have the current multifaceted version and possibly add support for other GUIs
-  (GTK+, QT, FXRuby, etc.) please let me know.
-  <br/><br/><br/>
-  </li>
-
-</ul>
-
-<br/>
-</li>
-
-<li><b>ONI</b>
-&nbsp;[<a href="oni/oni.tgz">Download</a>]
-&nbsp;[<a href="oni/doc/">API Documentation</a>]
-<br/><br/>ONI stands for Object Networked Interface.
-It is similiar to DRb and ROMP. But unlike them,
-ONI uses YAML to serialize objects. It is pre-alpha.
-<br/><br/><br/>
-</li>
-
-<li><b>GUtopIa</b>
-&nbsp;[<a href="gutopia/gutopia.tgz">Download</a>]
-&nbsp;[<a href="gutopia/doc/">API Documentation</a>]
-<br/><br/>NOTE: GUtopIa is undergoing a massive overhaul, so who knows how much of the below applies.<br/>
-GUtopIa is a GUI meta-API for the Ruby scripting language. We say "meta" because it presents a single common API
-to the developer regardless of the underlying base API. In sum, GUtopIa intends to provide a best-of-all-worlds GUI toolkit
-to the Ruby community of programmers, meeting all requirements of such a toolkit: cross-platform compatability,
-native platform integration, ease of coding with good Seperation Of Concerns and opertaing on the Principle of Least Suprise,
-international font support, as well as a good dose of flexibity and speed. There are two major divisions to the GUtopIa meta-API,
-tentatively nicked name Biz and Joy. Biz uses wxWindows as a backend GUI API, while Joy uses the ClanLib Game SDK.
-Both are open source projects in their own right. The common meta-API as presented to the developers is desgined around
-a Dual Channel Model-View-Control architecture. This structure provides optimal SOC. The core-application (Model)
-need not be necessarily altered in anyway in order to give it a user-interface (View). The two are coorelated by pairs
-of intermediary conduits, which are actually dynamically generated methods in the ruby source.
-These shuttle state changes "automagically" between core-application and user-interface (Controller).
-The GUtopIa project is an offspring of the original RougeProject, a part of FreeRIDE and continues in its footsteps
-with the goal of bringing GUI programming to new heights that only a languge like Ruby can provide.
-<br/><br/><br/>
-</li>
-
-</ul>
-
-
-<h1 style="font-family: arial; color: red; font-size: 26pt">&nbsp;* TOPLEVEL</h1>
-
-<ul>
-
-<li><b>REXML</b>
-&nbsp;[<a href="http://www.germane-software.com/software/rexml/">Homepage</a>]
-&nbsp;[<a href="http://www.germane-software.com/software/rexml/docs/tutorial.html">Tutorial</a>]
-&nbsp;[<a href="http://www.germane-software.com/software/rexml/doc/index.html">API Docs</a>]
-&nbsp;[<a href="http://www.germane-software.com/software/archives/rexml_2.2.2.tgz">Download Stable</a>]
-<br/><br/>REXML is an XML processor for the language Ruby. REXML is conformant (passes 100% of the Oasis non-validating tests), and includes full XPath support. It is reasonably fast, and is implemented in pure Ruby. Best of all, it has a clean, intuitive API.
-<br/><br/><br/>
-</li>
-
-<li><b>PL/Ruby</b>
-&nbsp;[<a href="http://moulon.inra.fr/ruby/plruby.html">Homepage</a>]
-&nbsp;[<a href="ftp://moulon.inra.fr/pub/ruby/">FTP Download</a>]
-<br/><br/>PL/Ruby is a loadable procedural language for the Postgres database system that enable the Ruby language to create functions and trigger procedures.
-<br/><br/><br/>
-</li>
-
-<li><b>YAML4R</b>
-&nbsp;[<a href="http://yaml4r.sourceforge.net/">Homepage</a>]
-<br/><br/>YAML4R is a Ruby implementatin of YAML.
-<br/><br/><br/>
-</li>
-
-</ul>
-
--->
 
 
 

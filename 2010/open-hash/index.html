@@ -1,0 +1,299 @@
+
+<html>
+
+<head>
+  <title>Ruby Works</title>
+
+  <link REL="SHORTCUT ICON" HREF="../../assets/images/ruby_1.jpg" />
+  <LINK REL=StyleSheet HREF="../../assets/style.css" TYPE="text/css" MEDIA=screen>
+
+  <script type="text/javascript" src="../../assets/jquery.js"></script>
+  <script type="text/javascript" src="../../assets/rubyworks.js"></script>
+</head>
+
+<body>
+
+<div style="margin: 0 auto; width: 960px;">
+
+<!-- Title -->
+<div class="nav">
+
+  <table width="100%">
+  <tr>
+  <td class="nav-menu">
+    <a href="../../index.html">Blog.read</a>
+    <a href="../../projects.html">Self.inspect</a>
+    <a href="../../rubynew.html">Ruby.new</a>
+    <a href="http://github.com/rubyworks/">Github.com</a>
+  </td>
+  <td class="search-box">
+    <FORM method="GET" action="http://www.google.com/group/ruby-talk-google/search?hl=en" target="_blank">
+    <!-- Search Google -->
+    <input type="text" name="q" size="25" maxlength="255" value="" class="search-input" />
+    <input type="hidden" name="hl" value="en" />
+    <input type="hidden" name="group" value="ruby-talk-google" />
+    <input type="submit" name="qt_g" VALUE="Search Ruby-Talk" />
+    <!-- Search Google -->
+    </FORM>
+  </td>
+  </tr>
+  </table>
+
+</div>
+
+<div style="padding: 30px; background: white;">
+
+
+<div class="page">
+
+  <div class="title"><a href="">Is OpenHash a Bad Idea?</a></div>
+
+  <p>A long time ago, in an now long forgotten thread, a ruby-talk poster
+asked, "what's all the fuss over these open classes? If you
+really need something like that just open up a Hash and add method_missing",
+or something to that effect. It seemed a reasonable comment, and for some
+time after that I thought this poster made a good point. For simple needs
+an "OpenHash" seems like a good light-weight solution, useful to many cases.</p>
+
+<p>The simplest implementation looks something like this:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">OpenHash</span> &lt; <span style="color:#036;font-weight:bold">Hash</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(s,*a,&amp;b)
+      <span style="color:#080;font-weight:bold">case</span> s.to_s
+      <span style="color:#080;font-weight:bold">when</span> <span style="background-color:#fff0ff"><span style="color:#404">/</span><span style="color:#04D">\=</span><span style="color:#808">$</span><span style="color:#404">/</span></span>
+        <span style="color:#038;font-weight:bold">self</span>[s] = a[<span style="color:#00D;font-weight:bold">0</span>]
+      <span style="color:#080;font-weight:bold">else</span>
+        a.empty? ? <span style="color:#038;font-weight:bold">self</span>[s] : <span style="color:#080;font-weight:bold">super</span>(s,*a,&amp;b)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">Very</span> concise, very elegant, very charming. <span style="color:#036;font-weight:bold">But</span> looks can be deceiving.
+<span style="color:#036;font-weight:bold">The</span> problem lies <span style="color:#080;font-weight:bold">in</span> the fact that <span style="color:#888">#method_missing catches public messages</span>
+that are undefined. <span style="color:#036;font-weight:bold">So</span> right off the bat that means a whole slew of hash
+keys are off limits --any public method already defined by <span style="color:#036;font-weight:bold">Hash</span> <span style="color:#080;font-weight:bold">or</span>
+<span style="color:#036;font-weight:bold">Enumerable</span>, <span style="color:#036;font-weight:bold">Object</span> <span style="color:#080;font-weight:bold">or</span> <span style="color:#036;font-weight:bold">Kernel</span>. <span style="color:#036;font-weight:bold">That</span><span style="background-color:#fff0f0;color:#D20"><span style="color:#710">'</span><span style="">s a lot of potential keys put off-limits.
+To mitigate this problem we can either use delegation, instead of sub-classing
+Hash, or we can privatize all the methods.
+
+</span></span></pre></div>
+</div>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+  private *instance_methods.map{ |x| x.to_s !~ <span style="background-color:#fff0ff"><span style="color:#404">/</span><span style="color:#808">^__</span><span style="color:#404">/</span></span> }
+
+</pre></div>
+</div>
+
+<p>The downside of course is that we no longer have access to any of the Hash
+methods --it's no longer a "Hash". So we have a bit of a catch-22.
+How much do we want OpenHash to get out of the way of potential keys
+and how much do we want access to the usual set of Hash methods?</p>
+
+<p>Even accepting this we have a more subtle issue. Any core extension
+method added to Hash, Enumerable (if we are sub-classing Hash), or
+Object and Kernel (in either case) by another library, <em>after</em> OpenHash
+has already been defined, will create another exception that can't
+be anticipated. The only robust work around for this is to
+make OpenHash a subclass of BasicObject, which means we will have to
+use delegation and Ruby 1.9 (or an emulative BlankSlate library).</p>
+
+<p>So now you might think, clearly these issues are the reason Ruby has
+OpenStruct (ostruct.rb) rather then this simple OpenHash class.
+However, it turns out that OpenStruct is little more than a delegated
+OpenHash and suffers all the same issues (as of Ruby 1.8.7 at least).</p>
+
+<p>Despite these issues it is tempting to think that simple classes like
+the above OpenHash are okay solutions in most cases. After all the chances
+of a name clash are fairly slim. I used to think that myself. But one day,
+as I considered using an OpenHash in production code, it dawned on me.
+Using a weak solution, just because it's "light-weight" and will <em>probably</em>
+be okay, is just asking for trouble. Even if all my pretty tests passed
+today, a simple change tomorrow in some far off dependency could stymie
+the whole works, and in such a way that it might not be so easily
+noticed right away. Clearly, despite the temptation, it is much wiser
+to use a more robust solution, even if it seems less elegant.</p>
+
+<p>But let's not give up hope on our OpenHash just yet. As it turns out
+there is a reasonably robust solution to it's shortcomings: We can
+protect all newly defined keys.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">OpenHash</span> &lt; <span style="color:#036;font-weight:bold">Hash</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(s,*a,&amp;b)
+      <span style="color:#080;font-weight:bold">case</span> s.to_s
+      <span style="color:#080;font-weight:bold">when</span> <span style="background-color:#fff0ff"><span style="color:#404">/</span><span style="color:#04D">\=</span><span style="color:#808">$</span><span style="color:#404">/</span></span>
+        <span style="color:#038;font-weight:bold">self</span>[s] = a[<span style="color:#00D;font-weight:bold">0</span>]
+        protect_slot(s)
+      <span style="color:#080;font-weight:bold">else</span>
+        a.empty? ? <span style="color:#038;font-weight:bold">self</span>[s] : <span style="color:#080;font-weight:bold">super</span>(s,*a,&amp;b)
+      <span style="color:#080;font-weight:bold">end</span>
+      private
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">protect_slot</span>(s)
+        (<span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">self</span>; <span style="color:#038;font-weight:bold">self</span>; <span style="color:#080;font-weight:bold">end</span>).class_eval <span style="color:#080;font-weight:bold">do</span>
+          protected s <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#038;font-weight:bold">nil</span>
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+</pre></div>
+</div>
+
+<p>This will ensure that any set value will remain so, no matter what
+methods are previously defined or subsequently defined in superclasses.
+W00t! But wait... we now run another risk. We can't depend on any method
+always being available. The above could even set <code>object_id = 10</code>.
+Ouch! Clearly we need to add a few exceptions, and we can do this more or
+less as we wish to get a class to best suit our needs. In fact, we can add
+a method #omit_slots.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+      private
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">omit_slots</span>
+        [<span style="color:#A60">:__id__</span>, <span style="color:#A60">:__send__</span>, <span style="color:#A60">:object_id</span>]
+      <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">protect_slot</span>(s)
+        (<span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">self</span>; <span style="color:#038;font-weight:bold">self</span>; <span style="color:#080;font-weight:bold">end</span>).class_eval <span style="color:#080;font-weight:bold">do</span>
+          protected s <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#038;font-weight:bold">nil</span>
+        <span style="color:#080;font-weight:bold">end</span> <span style="color:#080;font-weight:bold">unless</span> omit_slots.include(s.to_sym)
+      <span style="color:#080;font-weight:bold">end</span>
+
+</pre></div>
+</div>
+
+<p>That will handle the most basic case. If we need an OpenHash with
+more restrictive requirements we can just override #omit_slots, either
+via a singleton methods or by sub-classing OpenHash. Easy.</p>
+
+<p>This pretty much mitigates all our issues with OpenHash, though there
+are certainly as few things we can yet do to spruce it up, such as
+define and omit a #to_hash method. Even so, this implementation does
+leave us a bit straddled in at least one respect: We have to be very
+precise about what methods and keys we plan to use. That might not
+always be easy as we would like. So might there be a way to have our
+cake and eat it too?</p>
+
+<p>If we are willing to give up just a little of the usual elegance,
+then we can. Ruby allows us to define methods ending in a <code>?</code>
+mark. So we can use this for an alternate implementation to look up
+values. Lets call it OpenQuery.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">OpenQuery</span> &lt; <span style="color:#036;font-weight:bold">Hash</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(s, *a, &amp;b)
+      <span style="color:#080;font-weight:bold">case</span> s.to_s
+      <span style="color:#080;font-weight:bold">when</span> <span style="background-color:#fff0ff"><span style="color:#404">/</span><span style="color:#04D">\?</span><span style="color:#808">$</span><span style="color:#404">/</span></span>
+        <span style="color:#038;font-weight:bold">self</span>[s.to_s.chomp(<span style="background-color:#fff0f0;color:#D20"><span style="color:#710">'</span><span style="">?</span><span style="color:#710">'</span></span>).to_sym]
+      <span style="color:#080;font-weight:bold">when</span> <span style="background-color:#fff0ff"><span style="color:#404">/</span><span style="color:#04D">\=</span><span style="color:#808">$</span><span style="color:#404">/</span></span>
+        <span style="color:#038;font-weight:bold">self</span>[s] = a[<span style="color:#00D;font-weight:bold">0</span>]
+      <span style="color:#080;font-weight:bold">else</span>
+        <span style="color:#080;font-weight:bold">super</span>(s, *a, &amp;b)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+</pre></div>
+</div>
+
+<p>Now we have all the feature of regular Hash, plus the elegance of an OpenStruct
+so long as we end our look up methods with a question.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+  oq = <span style="color:#036;font-weight:bold">OpenQuery</span>.new
+  oq.foo = <span style="color:#00D;font-weight:bold">10</span>
+  oq.bar = <span style="color:#00D;font-weight:bold">20</span>
+  oq.foo?                 <span style="color:#888">#=&gt; 10</span>
+  oq.bar?                 <span style="color:#888">#=&gt; 20</span>
+  oq.map{ |k,v| v + <span style="color:#00D;font-weight:bold">10</span> }  <span style="color:#888">#=&gt; [20, 30]</span>
+
+</pre></div>
+</div>
+
+<p>With OpenQuery we need only worry about a dozen or so core methods ending
+in <code>?</code>.</p>
+
+<pre><code>has_key? empty? instance_variable_defined? has_value? key? nil? value?
+tainted? include? instance_of? equal? all? kind_of? eql? any? is_a?
+member? one? frozen? respond_to? none?
+</code></pre>
+
+<p>If these are really an issue, we can always add <code>#protect_slot</code> and
+<code>#omit_slots</code> into this solution as well.</p>
+
+<p>The OpenHash concept has been explored by others in the past. You can find
+a rendition of it <a href="http://github.com/karottenreibe/ohash">here</a>. In this
+case the author, Fabian Streitel, mitigates the name clash issue by not
+sub-classing Hash. If Fabian went one step further and sub-classed
+BasicObject then he'd have a pretty good solution on his hands.</p>
+
+<p>Ruby Facets also has a class called OpenObject. It is more robust
+than either OpenHash or OpenStruct in that it allows any method name
+to be set, and leaves only a few methods in place such as #each and</p>
+
+<h1>to_hash, but even these can, for better or worse, be overwritten</h1>
+
+<p>by the setter.</p>
+
+<p>So, returning to our original question, "Is OpenHash a bad idea?", we
+can happily say, "No". But only if we take great care in our design.
+As we have seen, there really is no perfect solution. There are
+trade-offs regardless of the solution chosen. Ultimately the key is
+to know exactly your needs and the potential consequences of the solution
+you select, and code accordingly.</p>
+
+
+  <small>Written by trans, 2010-04-14</small>
+
+  <ul class="posts">
+    
+    
+  </ul>
+
+  <script>
+  var idcomments_acct = '1e97cd0a25f01bb50181e727255ddffb';
+  var idcomments_post_id;
+  var idcomments_post_url;
+  </script>
+  <span id="IDCommentsPostTitle" style="display:none"></span>
+  <script type='text/javascript' src='http://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+
+</div>
+
+
+
+<br/><br/>
+
+<div style="text-align: center;">
+  <script type="text/javascript"><!--
+  google_ad_client = "pub-1126154564663472";
+  /* RUBYWORKS 09-10-02 728x90 */
+  google_ad_slot = "0788888658";
+  google_ad_width = 728;
+  google_ad_height = 90;
+  //-->
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+</div>
+
+<br/><br/>
+
+<div class="footer">
+(c) 2002 Thomas Sawyer, All Rights Reserved. Special Thanks to Dieter Stein for the Ruby icon.
+Graphic image is "Serpent" by Ruby Lee.
+</div>
+
+</body>
+
+</div>
+</html>
+

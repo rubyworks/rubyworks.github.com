@@ -13,12 +13,12 @@ stencil : liquid
       <a href="{{ post.url }}">{{ post.title }}</a>
     </div>
     <div class="btext">
-      {{ post.content }}
+      {{ post.summary }}
     </div>
     <p><a href="{{ post.url }}">Continue Reading</a></p>
     <!-- <small>Written by {{ post.author }}</small> -->
   </div>
-  <br/>
+  <br/><br/>
 {% endfor %}
 
 </div>

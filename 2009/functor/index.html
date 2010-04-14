@@ -5,32 +5,10 @@
   <title>Ruby Works</title>
 
   <link REL="SHORTCUT ICON" HREF="../../assets/images/ruby_1.jpg" />
+  <LINK REL=StyleSheet HREF="../../assets/style.css" TYPE="text/css" MEDIA=screen>
 
-  <style>
-    body  { font-family: arial; font-size: 11pt; margin: 0; padding: 0; background: url(../../assets/images/bg.jpg) 0 -10px repeat-x #dfdfff; }
-
-       a  { text-decoration: none; }
-
-       a:hover  { text-decoration: underline; }
-
-     img  { border: none; }
-
-      li  { font-family: monospace; font-size: 10pt; padding-bottom: 30px; }
-
-     .nav { font-family: arial;  height: 365px; border-left: 1px solid #ccc; border-right: 1px solid #ccc; }
-
-     .nav a { font-size: 18px; font-weight: bold; line-height: 36px; padding: 0 6px; text-decoration: none; }
-
-   .links a { color: #aaa; font-size: 0.9em; }
-
-   .title { font-family: arial; color: red; font-size: 28pt; height: 64px; background: url(../../assets/images/ruby_1.jpg) no-repeat; padding-left: 64px; }
-
-   .title a { text-decoration: none; font-family: arial; color: red; font-size: 28pt; height: 64px; }
-
-   .title .date { font-size: 20pt; }
-
-   .footer { font-size: 10px; border-top: 1px solid #ccc; color: #999; }
-  </style>
+  <script type="text/javascript" src="../../assets/jquery.js"></script>
+  <script type="text/javascript" src="../../assets/rubyworks.js"></script>
 </head>
 
 <body>
@@ -38,42 +16,41 @@
 <div style="margin: 0 auto; width: 960px;">
 
 <!-- Title -->
-<div class="nav" style="background: url(../../assets/images/serpent.jpg) no-repeat; padding-left: 300px;">
+<div class="nav">
 
-  <div style="font-family: arial; font-size: 32pt; color: #ee0022;">
-    <br/>
-    <b>Ruby Works</b> <br/>
+  <table width="100%">
+  <tr>
+  <td class="nav-menu">
     <a href="../../index.html">Blog.read</a>
     <a href="../../projects.html">Self.inspect</a>
     <a href="../../rubynew.html">Ruby.new</a>
     <a href="http://github.com/rubyworks/">Github.com</a>
-  </div>
-   
-  <div style="margin-top: 40px;">
-    <FORM method="GET" action="http://www.google.com/groups" target="_blank">
+  </td>
+  <td class="search-box">
+    <FORM method="GET" action="http://www.google.com/group/ruby-talk-google/search?hl=en" target="_blank">
     <!-- Search Google -->
-    <A HREF="http://www.google.com/">
-    <IMG SRC="http://www.google.com/logos/Logo_25wht.gif" border="0" ALT="Google" align="absmiddle"></A>
-    <INPUT TYPE="text" name="q" size="25" maxlength="255" value="">
-    <input type="hidden" name="hl" value="en">
-    <input type="hidden" name="group" value="comp.lang.ruby">
-    <INPUT type="submit" name="btnG" VALUE="Search Ruby Talk">
+    <input type="text" name="q" size="25" maxlength="255" value="" class="search-input" />
+    <input type="hidden" name="hl" value="en" />
+    <input type="hidden" name="group" value="ruby-talk-google" />
+    <input type="submit" name="qt_g" VALUE="Search Ruby-Talk" />
     <!-- Search Google -->
     </FORM>
-  </div>
+  </td>
+  </tr>
+  </table>
 
 </div>
 
-<div style="padding: 20px; background: white;">
+<div style="padding: 30px; background: white;">
 
 
 <div class="page">
 
-  <div class="title"><a href="">Functor</a></div>
+  <div class="title"><a href="">The Facetnating Functor</a></div>
 
-  <h1>Functor : Object :: Enumerator : Enumerable</h1>
-
-<p>In Ruby 1.9, Enumerable methods return an Enumerator when no block is provided them. This makes it very convenient to chain methods in what is often called <em>fluid notation</em>. For example, rather than the usual +#each_with_index+, one can use:</p>
+  <p>In Ruby 1.9, Enumerable methods return an Enumerator when no block is provided them.
+This makes it very convenient to chain methods in what is often called <em>fluid notation</em>.
+For example, rather than the usual <code>#each_with_index</code>, one can use:</p>
 
 <div class="CodeRay">
   <div class="code"><pre>
@@ -82,9 +59,13 @@
 </pre></div>
 </div>
 
-<p>Plenty of other possibilities along these lines become possible. It's a very powerful technique.</p>
+<p>Plenty of other possibilities along these lines become possible. It's a very
+powerful technique.</p>
 
-<p>In the same spirit, I think there is another class that could be used in much the same way for more general methods, namely what Ruby Facets calls a <em>Functor</em> --a function that acts on a function. Essentially, it is defined as:</p>
+<p>In the same spirit, there is another class that can be used in much the same way
+for more general purpose methods, namely what Ruby Facets calls a <em>Functor</em>.
+Also known as a Higher Order Function, it is a function that acts on a function.
+Essentially, it is defined as follows.</p>
 
 <div class="CodeRay">
   <div class="code"><pre>
@@ -104,14 +85,15 @@
 </pre></div>
 </div>
 
-<p>An interesting example of it's use if overriding +#instance_eval+ to return a functor when no block is provided.</p>
+<p>Here is an example of it's use is overriding <code>#instance_eval<code> to return
+a Functor when no block is provided.</p>
 
 <div class="CodeRay">
   <div class="code"><pre>
   <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Object</span>
     <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">instance_eval</span>(*args, &amp;blk)
       <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">super</span> <span style="color:#080;font-weight:bold">if</span> blk <span style="color:#080;font-weight:bold">or</span> !args.empty?
-      <span style="color:#33B">@_instance_eval</span> ||= <span style="color:#036;font-weight:bold">Functor</span>.new <span style="color:#080;font-weight:bold">do</span> |op, *a, &amp;b|
+      <span style="color:#036;font-weight:bold">Functor</span>.new <span style="color:#080;font-weight:bold">do</span> |op, *a, &amp;b|
         fcall(op, *a, &amp;b)
       <span style="color:#080;font-weight:bold">end</span>
     <span style="color:#080;font-weight:bold">end</span>
@@ -120,16 +102,36 @@
 </pre></div>
 </div>
 
-<p>Now we can call a single method via instance_eval using fluid notation instead of having to open a block.</p>
+<p>Now we can call a single method via <code>#instance_eval</code> using fluid notation
+instead of having to open a block.</p>
 
 <div class="CodeRay">
   <div class="code"><pre>
-  <span style="color:#036;font-weight:bold">MyClass</span>.instance_eval.attr_accessor <span style="color:#A60">:x</span>
+  <span style="color:#036;font-weight:bold">MyClass</span>.instance_eval.attr <span style="color:#A60">:x</span>
 
 </pre></div>
 </div>
 
-<p>There are many other similar uses for Functors. Just as Enumerator opens up a great deal of convenience and conciseness for Enumerable methods, Functor can do the same for methods generally.</p>
+<p>Let's consider another use, perhaps one a little more charming this time.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Enumerable</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">all</span>
+      <span style="color:#036;font-weight:bold">Functor</span>.new <span style="color:#080;font-weight:bold">do</span> |op, *a, &amp;b|
+        map{ |x| x.fcall(op, *a, &amp;b) }
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  [<span style="color:#00D;font-weight:bold">1</span>,<span style="color:#00D;font-weight:bold">2</span>,<span style="color:#00D;font-weight:bold">3</span>].all + <span style="color:#00D;font-weight:bold">3</span>  <span style="color:#888">#=&gt; [4,5,6]</span>
+
+<span style="color:#036;font-weight:bold">There</span> are many other similar uses <span style="color:#080;font-weight:bold">for</span> <span style="color:#036;font-weight:bold">Functors</span>. <span style="color:#036;font-weight:bold">Just</span> as <span style="color:#036;font-weight:bold">Enumerator</span> opens up a
+great deal of convenience <span style="color:#080;font-weight:bold">and</span> conciseness <span style="color:#080;font-weight:bold">for</span> <span style="color:#036;font-weight:bold">Enumerable</span> methods, <span style="color:#036;font-weight:bold">Functor</span> can
+<span style="color:#080;font-weight:bold">do</span> the same <span style="color:#080;font-weight:bold">for</span> methods generally.
+
+</pre></div>
+</div>
 
 
   <small>Written by trans, 2009-09-30</small>

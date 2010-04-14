@@ -1,5 +1,5 @@
 ---
-title  : New Website
+title  : RubyWorks::Website.new
 author : trans
 tags   : website
 date   : 2009-08-24
@@ -7,22 +7,19 @@ layout : post
 
 --- markdown
 
-# Further Proof that Ruby Works
-
 Recently I set out to migrate most of my work from Rubyforge to GitHub, in so doing I needed a umbrella account to place all these
 wonderfully chewy morsals. In deliberating a name for the account I recollected the very first Ruby website I had ever created back
 in 2002. It was called Ruby Works and hosted at http://transami.net/ruby. It has long been defunct, but it seems fitting to bring my
-Ruby career to a close by coming full circle. And so Ruby Works was reborn.
+waining Ruby career to a conclusion by coming full circle. And so Ruby Works was reborn.
 
 In the process of this migration I made myself this nifty new blog built with [Brite](http://proutils.github.com/brite), my home grown
-static website and weblog construction kit. Actually, it's more than just a "Ruby Works" name that I am revitializing. I'm reusing the
-orginal stylesheet for that orginal site too (albeit well modifed at this point).
+static website and weblog construction kit.
 
 In any case, this website is dedicated to the many awesome Ruby projects I've had the privilege to develop and maintain over the years.
-Combined with [ProUtils](http://proutils.github.com) and [Death](http://death.rubyforge.org) --my scrap projects, these cover my complete
-works in the Rubydom. Most of the projects are in good working order. In fact, I've only let a couple non-useable projects into the
-collection, in their case because I would like to get them working soon. All the rest good to go, some in relatviely perfect order,
-others still a little rough around the edges, but all usable.
+Combined with [ProUtils](http://proutils.github.com) these cover my complete works in the Rubydom. Most of the projects are in good
+working order. In fact, I've only let a couple non-useable projects into the collection, in their case because I would like to get
+them working soon. All the rest good to go, some in relatviely perfect order, others still a little rough around the edges, but 
+still usable.
 
 As time wears on I'll blog about these various projects here (now that I have this spiffy new blog). If you would like to discuss any
 of these projects please hop over the the [Google Group](http://googlegroups.com/group/rubyworks-mailinglist). I setup the group

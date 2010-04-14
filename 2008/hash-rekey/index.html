@@ -5,32 +5,10 @@
   <title>Ruby Works</title>
 
   <link REL="SHORTCUT ICON" HREF="../../assets/images/ruby_1.jpg" />
+  <LINK REL=StyleSheet HREF="../../assets/style.css" TYPE="text/css" MEDIA=screen>
 
-  <style>
-    body  { font-family: arial; font-size: 11pt; margin: 0; padding: 0; background: url(../../assets/images/bg.jpg) 0 -10px repeat-x #dfdfff; }
-
-       a  { text-decoration: none; }
-
-       a:hover  { text-decoration: underline; }
-
-     img  { border: none; }
-
-      li  { font-family: monospace; font-size: 10pt; padding-bottom: 30px; }
-
-     .nav { font-family: arial;  height: 365px; border-left: 1px solid #ccc; border-right: 1px solid #ccc; }
-
-     .nav a { font-size: 18px; font-weight: bold; line-height: 36px; padding: 0 6px; text-decoration: none; }
-
-   .links a { color: #aaa; font-size: 0.9em; }
-
-   .title { font-family: arial; color: red; font-size: 28pt; height: 64px; background: url(../../assets/images/ruby_1.jpg) no-repeat; padding-left: 64px; }
-
-   .title a { text-decoration: none; font-family: arial; color: red; font-size: 28pt; height: 64px; }
-
-   .title .date { font-size: 20pt; }
-
-   .footer { font-size: 10px; border-top: 1px solid #ccc; color: #999; }
-  </style>
+  <script type="text/javascript" src="../../assets/jquery.js"></script>
+  <script type="text/javascript" src="../../assets/rubyworks.js"></script>
 </head>
 
 <body>
@@ -38,33 +16,32 @@
 <div style="margin: 0 auto; width: 960px;">
 
 <!-- Title -->
-<div class="nav" style="background: url(../../assets/images/serpent.jpg) no-repeat; padding-left: 300px;">
+<div class="nav">
 
-  <div style="font-family: arial; font-size: 32pt; color: #ee0022;">
-    <br/>
-    <b>Ruby Works</b> <br/>
+  <table width="100%">
+  <tr>
+  <td class="nav-menu">
     <a href="../../index.html">Blog.read</a>
     <a href="../../projects.html">Self.inspect</a>
     <a href="../../rubynew.html">Ruby.new</a>
     <a href="http://github.com/rubyworks/">Github.com</a>
-  </div>
-   
-  <div style="margin-top: 40px;">
-    <FORM method="GET" action="http://www.google.com/groups" target="_blank">
+  </td>
+  <td class="search-box">
+    <FORM method="GET" action="http://www.google.com/group/ruby-talk-google/search?hl=en" target="_blank">
     <!-- Search Google -->
-    <A HREF="http://www.google.com/">
-    <IMG SRC="http://www.google.com/logos/Logo_25wht.gif" border="0" ALT="Google" align="absmiddle"></A>
-    <INPUT TYPE="text" name="q" size="25" maxlength="255" value="">
-    <input type="hidden" name="hl" value="en">
-    <input type="hidden" name="group" value="comp.lang.ruby">
-    <INPUT type="submit" name="btnG" VALUE="Search Ruby Talk">
+    <input type="text" name="q" size="25" maxlength="255" value="" class="search-input" />
+    <input type="hidden" name="hl" value="en" />
+    <input type="hidden" name="group" value="ruby-talk-google" />
+    <input type="submit" name="qt_g" VALUE="Search Ruby-Talk" />
     <!-- Search Google -->
     </FORM>
-  </div>
+  </td>
+  </tr>
+  </table>
 
 </div>
 
-<div style="padding: 20px; background: white;">
+<div style="padding: 30px; background: white;">
 
 
 <div class="page">

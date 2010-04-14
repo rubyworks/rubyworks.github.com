@@ -5,32 +5,10 @@
   <title>Ruby Works</title>
 
   <link REL="SHORTCUT ICON" HREF="assets/images/ruby_1.jpg" />
+  <LINK REL=StyleSheet HREF="assets/style.css" TYPE="text/css" MEDIA=screen>
 
-  <style>
-    body  { font-family: arial; font-size: 11pt; margin: 0; padding: 0; background: url(assets/images/bg.jpg) 0 -10px repeat-x #dfdfff; }
-
-       a  { text-decoration: none; }
-
-       a:hover  { text-decoration: underline; }
-
-     img  { border: none; }
-
-      li  { font-family: monospace; font-size: 10pt; padding-bottom: 30px; }
-
-     .nav { font-family: arial;  height: 365px; border-left: 1px solid #ccc; border-right: 1px solid #ccc; }
-
-     .nav a { font-size: 18px; font-weight: bold; line-height: 36px; padding: 0 6px; text-decoration: none; }
-
-   .links a { color: #aaa; font-size: 0.9em; }
-
-   .title { font-family: arial; color: red; font-size: 28pt; height: 64px; background: url(assets/images/ruby_1.jpg) no-repeat; padding-left: 64px; }
-
-   .title a { text-decoration: none; font-family: arial; color: red; font-size: 28pt; height: 64px; }
-
-   .title .date { font-size: 20pt; }
-
-   .footer { font-size: 10px; border-top: 1px solid #ccc; color: #999; }
-  </style>
+  <script type="text/javascript" src="assets/jquery.js"></script>
+  <script type="text/javascript" src="assets/rubyworks.js"></script>
 </head>
 
 <body>
@@ -38,50 +16,51 @@
 <div style="margin: 0 auto; width: 960px;">
 
 <!-- Title -->
-<div class="nav" style="background: url(assets/images/serpent.jpg) no-repeat; padding-left: 300px;">
+<div class="nav">
 
-  <div style="font-family: arial; font-size: 32pt; color: #ee0022;">
-    <br/>
-    <b>Ruby Works</b> <br/>
+  <table width="100%">
+  <tr>
+  <td class="nav-menu">
     <a href="index.html">Blog.read</a>
     <a href="projects.html">Self.inspect</a>
     <a href="rubynew.html">Ruby.new</a>
     <a href="http://github.com/rubyworks/">Github.com</a>
-  </div>
-   
-  <div style="margin-top: 40px;">
-    <FORM method="GET" action="http://www.google.com/groups" target="_blank">
+  </td>
+  <td class="search-box">
+    <FORM method="GET" action="http://www.google.com/group/ruby-talk-google/search?hl=en" target="_blank">
     <!-- Search Google -->
-    <A HREF="http://www.google.com/">
-    <IMG SRC="http://www.google.com/logos/Logo_25wht.gif" border="0" ALT="Google" align="absmiddle"></A>
-    <INPUT TYPE="text" name="q" size="25" maxlength="255" value="">
-    <input type="hidden" name="hl" value="en">
-    <input type="hidden" name="group" value="comp.lang.ruby">
-    <INPUT type="submit" name="btnG" VALUE="Search Ruby Talk">
+    <input type="text" name="q" size="25" maxlength="255" value="" class="search-input" />
+    <input type="hidden" name="hl" value="en" />
+    <input type="hidden" name="group" value="ruby-talk-google" />
+    <input type="submit" name="qt_g" VALUE="Search Ruby-Talk" />
     <!-- Search Google -->
     </FORM>
-  </div>
+  </td>
+  </tr>
+  </table>
 
 </div>
 
-<div style="padding: 20px; background: white;">
+<div style="padding: 30px; background: white;">
 
 
 <div class="title">Ruby.new</div>
 
 
 <p>I love Ruby. It is no doubt the best programming language I've had the priviledge to write-in.
-Yet there are some aspect to it that I feel can be impoved. This section outlines an evolving
-set of notions about what I would like to see changed. Perhaps they will find there way into
-Ruby one day; perhaps they will end up defining a new programming language based on Ruby, or
-perhaps they will just sit here on this page. In either case, here they be...</p>
+Yet there are some aspects that I feel can be imporved. I guess that's a sentiment of any
+programmer. This section outlines an evolving set of notions about what I would like to see
+changed. Perhaps they will find there way into Ruby one day; perhaps they will end up defining
+a new programming language based on Ruby, or perhaps, more likely, they will just keep sitting
+here on this page ;) In any case, do me a favor and don't judge them too harshly. Some are little
+more than thinking aloud.</p>
 
 <h1>Class/Module Unification</h1>
 
-<p>I beleive the distinciton between class and module in Ruby, is completely disadvantgeous
+<p>I beleive the distinciton between class and module in Ruby is completely disadvantgeous
 to the language. For starters, the distinciton is arbitrary. There is literally conditional
 code in Ruby that prevents the instaniation of a module or including a class. Remove these
-conditions and Ruby will continue to work regardless.</p>
+conditions and Ruby will basically continue to work regardless.</p>
 
 <p>In addition, the distinction makes it impossible for our programs to use namespace freely.</p>
 
@@ -94,21 +73,44 @@ conditions and Ruby will continue to work regardless.</p>
 </pre></div>
 </div>
 
-<p>Will blow up in our face becuase SomeSpace is not defined. Have you ever run into the issue
-of requiring a library that uses the namespace defined by the file you requiring from?
-Frustratingly you have to put the requires at the bottom of the script.</p>
+<p>Will blow up in your face if SomeSpace is not defined. If classes and modules were effectively
+the same it would not longer matter, and SomeSpace could be auto-instanitated.</p>
+
+<p>Have you ever run into the issue of requiring a library that uses the namespace defined by the
+file you requiring from? Frustratingly you have to put the requires at the bottom of the script.</p>
+
+<h1>Using @ and @@ like a Hash</h1>
+
+<p>An object's collection of instance variables is essentially a Hash. And at times it's
+convenient to deal with it as such. But this requires many little tricks using
+instance_variable_get and friends. Why not allow instance variables the full Hash behavior?</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+    <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Foo</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">same?</span>
+        <span style="color:#F00;background-color:#FAA">@</span>[<span style="color:#A60">:a</span>] == <span style="color:#33B">@a</span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">ivars</span>
+        <span style="color:#F00;background-color:#FAA">@</span>.map{ |k,v| k }
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+</pre></div>
+</div>
 
 <h1>Method and Variable Isomorphics</h1>
 
-<p>A Method definition will amount to no more than assigning a Proc to a variable.
+<p>It would be nice if method definitions amounted to little more than assigning a Proc to a variable.
 Thus a Proc and a Method are no longer distinct, and the #call method becomes generally unnecessary.
-Also the kernel method Proc itself is depricated and { } always stand for a proc/method.
+Also the kernel method Proc itself could be depricated and -> { } always stand for a proc/method.
 For example:</p>
 
 <div class="CodeRay">
   <div class="code"><pre>
     <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Foo</span>
-      bar = { |x| puts x }
+      bar = -&gt; { |x| puts x }
     <span style="color:#080;font-weight:bold">end</span>
 
 </pre></div>
@@ -127,32 +129,38 @@ For example:</p>
 </pre></div>
 </div>
 
-<h1>Syntax Sugar $, @ and @@</h1>
+<h1>Method definitions for $, @ and @@</h1>
 
-<p>Given the above, class variables can be accessed just as class methods, i.e. using the class name as a prefix.
-@@ then becomes no more the syntax sugar meaning just that. Likewise @ becomes no more than syntax sugar for self.
-To follow through with this $ becomes syntax sugar for the new unversally available toplevel object.</p>
+<p>One thing Ruby lacks that could be useful in some case are class-private methods. These
+methods would not visible outside their immediate class. Of course the difficulty is
+how to notate these. At one point in occured to me that @ provided the perfect notation.</p>
 
 <div class="CodeRay">
   <div class="code"><pre>
-    <span style="color:#d70;font-weight:bold">$x</span> == toplevel.x
-    <span style="color:#369">@@x</span> == <span style="color:#036;font-weight:bold">ClassName</span>.x (<span style="color:#080;font-weight:bold">in</span> <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">context</span>)
-    <span style="color:#33B">@x</span> == <span style="color:#038;font-weight:bold">self</span>.x (<span style="color:#080;font-weight:bold">in</span> object context)
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">X</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#33B">@x</span>
+      <span style="background-color:#fff0f0;color:#D20"><span style="color:#710">&quot;</span><span style="">I can only be seen by X.</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">show</span>
+      <span style="color:#33B">@x</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
 
 </pre></div>
 </div>
 
-<p>We prefer that self be the default receiver wheneve a receiver is not specified.
-But we must consider the case of ambiguity between this and locals.
-The simplist way is probably to define % as synatical sugar for a local object attributed to blocks (i.e. Proc/Method).
-This still bares consideration.</p>
+<p>Naturally this leads one to the same conclusion for @@ and $. Global methods... interesting.</p>
 
-<h1>String will function as if an Array of Characters</h1>
+<div class="CodeRay">
+  <div class="code"><pre>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#d70;font-weight:bold">$intersting</span>
+    <span style="background-color:#fff0f0;color:#D20"><span style="color:#710">&quot;</span><span style="">Down with global lambdas!</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
 
-<p>The String class will have its method definitions stricty coorrespond to those of the Array class,
-in all places applicable.</p>
+</pre></div>
+</div>
 
-<h1>%l and %L</h1>
+<h1>Margin Controlled Strings using %l and %L</h1>
 
 <p>Respective to %q and %Q, will provide a margin controlled literal string constructor.</p>
 
@@ -170,20 +178,37 @@ in all places applicable.</p>
 
 <h1>NackClass</h1>
 
-<p>A NackClass is the same as NilClass except for any method it does not recognize, it return s itself.
-(I use to call this NullClass, but "nack" seems a more fitting term.)</p>
+<p>A NackClass is the same as NilClass except for any method it does not recognize, it return
+the instance of itself.</p>
 
-<h1>Boolean</h1>
+<div class="CodeRay">
+  <div class="code"><pre>
+  nack.nack.nack.nack  <span style="color:#888">#=&gt; nack</span>
 
-<p>If we had a tru Boolean class, with a internal true or false state, ...</p>
+</pre></div>
+</div>
 
-<h1>Infinity</h1>
+<p>Note I used to call this <code>NullClass</code>, but "nack" seems a little more fitting
+a term. I can go either way though.</p>
 
-<p>Err.. Where is Infinity?</p>
+<h1>Object's can be True or False</h1>
+
+<p>All Ruby objects except <code>nil</code> and <code>false</code> always evaluate to true
+in a conditional. It would be quite powerful if we could override this behavior.
+In fact it would allow us to define the previously mentioned NackClass ourselves.</p>
 
 <h1>DateTime</h1>
 
-<p>An improved class for dealing with dates and times that will incorporate the current Time, Date and ParseDate classes.</p>
+<p>Oh lord, this is really a biggy. Ruby's current handling of Dates and Times is all over the map. We have Date,
+Time, DateTime, ParseDate, and more, not to mention all the other common extensions running around
+out there. Ruby needs an improved class that incorporates them all. If memory servers there a library out there
+called <code>Chronos</code> that might do the trick.</p>
+
+<h1>Infinity</h1>
+
+<p>Err.. Where is a real Infinity?</p>
+
+<p>I'll end it there with that little joke.</p>
 
 
 <br/><br/>

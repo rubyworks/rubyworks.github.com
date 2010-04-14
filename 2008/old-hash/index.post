@@ -7,9 +7,6 @@ layout   : post
 
 --- markdown
 
-This Old Hash
-=============
-
 The Hash may well be the most used class in Ruby. Sure, our programs
 have arrays and strings galore, but they generally come and go without
 much ado. Hashes on the other hand get *used*; and by that I mean to

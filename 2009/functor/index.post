@@ -1,0 +1,86 @@
+---
+title  : The Facetnating Functor
+author : trans
+tags   : ruby
+date   : 2009-09-30
+
+--- markdown
+
+In Ruby 1.9, Enumerable methods return an Enumerator when no block is provided them.
+This makes it very convenient to chain methods in what is often called *fluid notation*.
+For example, rather than the usual <code>#each_with_index</code>, one can use:
+
+--- coderay.ruby
+
+  [1,2,3].each.with_index{ |e, i| ... }
+
+--- markdown
+
+Plenty of other possibilities along these lines become possible. It's a very
+powerful technique.
+
+In the same spirit, there is another class that can be used in much the same way
+for more general purpose methods, namely what Ruby Facets calls a *Functor*.
+Also known as a Higher Order Function, it is a function that acts on a function.
+Essentially, it is defined as follows.
+
+--- coderay.ruby
+
+  class Functor
+    private(*instance_methods.select { |m| m !~ /(^__|^binding$)/ })
+    def initialize(&function)
+      @function = function
+    end
+    def to_proc
+      @function
+    end
+    def method_missing(op, *args, &blk)
+      @function.call(op, *args, &blk)
+    end
+  end
+
+--- markdown
+
+Here is an example of it's use is overriding <code>#instance_eval<code> to return
+a Functor when no block is provided.
+
+--- coderay.ruby
+
+  class Object
+    def instance_eval(*args, &blk)
+      return super if blk or !args.empty?
+      Functor.new do |op, *a, &b|
+        fcall(op, *a, &b)
+      end
+    end
+  end
+
+--- markdown
+
+Now we can call a single method via <code>#instance_eval</code> using fluid notation
+instead of having to open a block.
+
+--- coderay.ruby
+
+  MyClass.instance_eval.attr :x
+
+--- markdown
+
+Let's consider another use, perhaps one a little more charming this time.
+
+--- coderay.ruby
+
+  module Enumerable
+    def all
+      Functor.new do |op, *a, &b|
+        map{ |x| x.fcall(op, *a, &b) }
+      end
+    end
+  end
+
+  [1,2,3].all + 3  #=> [4,5,6]
+
+There are many other similar uses for Functors. Just as Enumerator opens up a
+great deal of convenience and conciseness for Enumerable methods, Functor can
+do the same for methods generally.
+
