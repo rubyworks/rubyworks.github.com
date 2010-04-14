@@ -29,6 +29,8 @@ The simplest implementation looks something like this:
     end
   end
 
+--- markdown
+
 Very concise, very elegant, very charming. But looks can be deceiving.
 The problem lies in the fact that #method_missing catches public messages
 that are undefined. So right off the bat that means a whole slew of hash
@@ -177,7 +179,6 @@ in <code>?</code>.
 
 If these are really an issue, we can always add <code>#protect_slot</code> and
 <code>#omit_slots</code> into this solution as well.
-
 
 The OpenHash concept has been explored by others in the past. You can find
 a rendition of it [here](http://github.com/karottenreibe/ohash). In this

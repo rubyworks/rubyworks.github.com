@@ -70,16 +70,16 @@ an "OpenHash" seems like a good light-weight solution, useful to many cases.</p>
     <span style="color:#080;font-weight:bold">end</span>
   <span style="color:#080;font-weight:bold">end</span>
 
-<span style="color:#036;font-weight:bold">Very</span> concise, very elegant, very charming. <span style="color:#036;font-weight:bold">But</span> looks can be deceiving.
-<span style="color:#036;font-weight:bold">The</span> problem lies <span style="color:#080;font-weight:bold">in</span> the fact that <span style="color:#888">#method_missing catches public messages</span>
-that are undefined. <span style="color:#036;font-weight:bold">So</span> right off the bat that means a whole slew of hash
-keys are off limits --any public method already defined by <span style="color:#036;font-weight:bold">Hash</span> <span style="color:#080;font-weight:bold">or</span>
-<span style="color:#036;font-weight:bold">Enumerable</span>, <span style="color:#036;font-weight:bold">Object</span> <span style="color:#080;font-weight:bold">or</span> <span style="color:#036;font-weight:bold">Kernel</span>. <span style="color:#036;font-weight:bold">That</span><span style="background-color:#fff0f0;color:#D20"><span style="color:#710">'</span><span style="">s a lot of potential keys put off-limits.
-To mitigate this problem we can either use delegation, instead of sub-classing
-Hash, or we can privatize all the methods.
-
-</span></span></pre></div>
+</pre></div>
 </div>
+
+<p>Very concise, very elegant, very charming. But looks can be deceiving.
+The problem lies in the fact that #method_missing catches public messages
+that are undefined. So right off the bat that means a whole slew of hash
+keys are off limits --any public method already defined by Hash or
+Enumerable, Object or Kernel. That's a lot of potential keys put off-limits.
+To mitigate this problem we can either use delegation, instead of sub-classing
+Hash, or we can privatize all the methods.</p>
 
 <div class="CodeRay">
   <div class="code"><pre>
