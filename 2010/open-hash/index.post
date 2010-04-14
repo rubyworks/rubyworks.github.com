@@ -102,11 +102,11 @@ protect all newly defined keys.
 
 This will ensure that any set value will remain so, no matter what
 methods are previously defined or subsequently defined in superclasses.
-W00t! But wait... we now run another risk. We can't depend on any method
-always being available. The above could even set <code>object_id = 10</code>.
-Ouch! Clearly we need to add a few exceptions, and we can do this more or
-less as we wish to get a class to best suit our needs. In fact, we can add
-a method #omit_slots.
+W00t! But wait... we now run another risk. We can't depend on any original 
+method always being available. The above code would even allow
+<code>object_id = :you_loose</code>. Ouch! Clearly we need to add a few
+exceptions. We can do this in such a way as to make it easy to adjust the
+class to best suit our needs, by adding a new method #omit_slots.
 
 --- coderay.ruby
 
@@ -117,7 +117,7 @@ a method #omit_slots.
       def protect_slot(s)
         (class << self; self; end).class_eval do
           protected s rescue nil
-        end unless omit_slots.include(s.to_sym)
+        end unless omit_slots.include?(s.to_sym)
       end
 
 --- markdown
@@ -173,12 +173,16 @@ so long as we end our look up methods with a question.
 With OpenQuery we need only worry about a dozen or so core methods ending 
 in <code>?</code>.
 
+--- coderay.ruby
+
     has_key? empty? instance_variable_defined? has_value? key? nil? value?
     tainted? include? instance_of? equal? all? kind_of? eql? any? is_a?
     member? one? frozen? respond_to? none?
 
+--- markdown
+
 If these are really an issue, we can always add <code>#protect_slot</code> and
-<code>#omit_slots</code> into this solution as well.
+<code>#omit_slots</code> to this solution as well.
 
 The OpenHash concept has been explored by others in the past. You can find
 a rendition of it [here](http://github.com/karottenreibe/ohash). In this
