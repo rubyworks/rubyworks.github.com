@@ -17,7 +17,7 @@
    <content type="html"><p>Perhaps you've already heard that Ruby Facets is filtering it's arsenal
 of code to provide ONLY core and standard library extension methods.
 This means a number of classes and modules that remained in Ruby Facets
-after the last "<i>MORE library clean-Up</i>" have to move out. The question
+after the last "<i>MORE library clean-up</i>" have to move out. The question
 is, where to?</p>
 
 <p>Somewhat surprisingly, much of the remaining MORE library's classes and
