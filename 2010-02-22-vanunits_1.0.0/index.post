@@ -1,0 +1,18 @@
+---
+title  : VanUnits 1.0.0
+author : trans
+tags   : vanunits
+date   : 2010-02-22
+
+--- markdown
+
+VanUnits is the SI units system originally underpinning Stick.
+Stick has implemented a new <i>experimental</i> unit system,
+so the prior system, which remains a very competent and useful
+system, is being spun-off as VanUnits, named after the primary
+designer Peter Vanbroekhoven.
+
+The components included are the base unit system, the
+currency system (which needs an online backend to function),
+and a set of scientific constants utilizing the units.
+

@@ -1,0 +1,17 @@
+---
+title  : XDG 1.0.0
+author : trans
+tags   : xdg
+date   : 2009-12-01
+
+--- markdown
+
+This is a major re-implementation of the <a href="http://rubyworks.github.com/xdg">XDG</a>
+API to be more flexible and object-oriented. Instead of a single module with every 
+needed method, the system is divided up into sub-modules, one for each set of XDG
+locations. So, for example, instead of "XDG.data_dirs" you use "XDG::Data.dirs"
+or "XDG.data.dirs".
+
+Would love to get feedback on this project, especially suggestions on how it can be
+enhanced to support more aspects of XDG standards.
+

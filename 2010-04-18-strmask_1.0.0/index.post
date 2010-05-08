@@ -1,0 +1,33 @@
+---
+title  : String::Mask 0.3.0
+author : trans
+tags   : strmask, string
+date   : 2010-04-18
+
+--- markdown
+
+String::Mask provides a tool for manipulating strings
+in a logicomathematical manner (e.g. add, subtract, xor)
+using <i>masks</i>. This new release simply changes #to_s
+and #inspect to return strings with the mask character
+re-inserted. Here are some examples.
+
+--- coderay.ruby
+
+  require 'strmask'
+
+  m1 = "abc..123".to_mask('.')
+  m2 = "ab..789.".to_mask('.')
+
+  m1 - m2  #=> "....789."
+  m1 + m2  #=> "abc.7893"
+  m1 * m2  #=> "ab..789."
+  m1 ^ m2  #=> "..c.7..3"
+  m1 % m2  #=> "abc..123"
+
+--- markdown
+
+This library was originally written to expirement with genetic
+algorithms. It is a very generic set of functions. No doubt
+there are many other potential uses.
+

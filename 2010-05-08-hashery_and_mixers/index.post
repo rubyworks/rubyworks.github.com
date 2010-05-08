@@ -1,0 +1,35 @@
+---
+title  : Hashery and Mixers
+author : trans
+tags   : hash
+date   : 2010-05-08
+
+--- markdown
+
+Perhaps you've already heard that Ruby Facets is filtering it's arsenal
+of code to provide ONLY core and standard library extension methods.
+This means a number of classes and modules that remained in Ruby Facets
+after the last "<i>MORE library clean-Up</i>" have to move out. The question
+is, where to?
+
+Somewhat surprisingly, much of the remaining MORE library's classes and
+modules fall into two categories, and based on this have found their way
+into two new spin-off projects: The <a href="http://rubyworks.github.com/hashery">Ruby Hashery</a>
+and <a href="http://rubyworks.github.com/mixers">Ruby Mixers</a>.
+In both projects are found a small collection of nicely related libraries.
+In Hashery, it is a collection of Hash-like classes. While in Mixers, it
+is a collection of mixin modules. Be sure to check them out. If you were
+using any of these libraries before, now you know where to find them
+when Facets 3.0 comes out.
+
+
+--- markdown
+
+In some respects the great, megalithic and all-in-one
+Ruby Facets will be missed. It was nice to have a single dependency for
+so much functionality. But the new focus and subsequent spin-offs have
+proved even more fruitful. The classes and modules in Hashery and
+Mixers have already been substantially improved by the transition.
+And, Facets 3.0, which will be released soon, is likewise shaping up
+to be the best release ever.
+

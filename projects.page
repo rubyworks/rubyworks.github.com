@@ -6,15 +6,19 @@ stencil : rhtml
 
 <%
   require 'pom'
-  dirs = Dir['../*'] - ['../rubyworks.github.com', '../opendsl', '../rbsystem']
+  dirs = Dir['../*'] - ['../rubyworks.github.com', '../opendsl', '../live']
   @projects = []
   dirs.each do |d|
     puts "Load: #{d}" if $DEBUG
-    prj = POM::Project.new(d)
-    if prj.metadata.valid?
-      @projects << prj
-    else
-      puts "Invalid POM #{d}"
+    begin
+      prj = POM::Project.new(d)
+      if prj.metadata.valid?
+        @projects << prj
+      else
+        puts "Invalid POM for #{d}"
+      end
+    rescue
+      puts "Can't load POM for #{d}"
     end
   end
 %>

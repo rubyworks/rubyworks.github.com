@@ -7,14 +7,13 @@ layout : post
 
 --- markdown
 
-A long time ago, in an now long forgotten thread, a ruby-talk poster
+A long time ago, in an now long forgotten ruby-talk thread, a poster
 asked, "what's all the fuss over these open classes? If you
 really need something like that just open up a Hash and add method_missing",
-or something to that effect. It seemed a reasonable comment, and for some
-time after that I thought this poster made a good point. For simple needs
-an "OpenHash" seems like a good light-weight solution, useful to many cases.
-
-The simplest implementation looks something like this:
+or something to that effect. It seemed a reasonable comment. And for some
+time after I thought the poster made a good point: for simple needs
+an "OpenHash" is a good light-weight solution, useful to many cases.
+The basic implementation of an OpenHash is as follows.
 
 --- coderay.ruby
 
@@ -31,13 +30,13 @@ The simplest implementation looks something like this:
 
 --- markdown
 
-Very concise, very elegant, very charming. But looks can be deceiving.
+Very concise, very elegant, very charming. But, looks can be deceiving.
 The problem lies in the fact that #method_missing catches public messages
-that are undefined. So right off the bat that means a whole slew of hash
-keys are off limits --any public method already defined by Hash or
-Enumerable, Object or Kernel. That's a lot of potential keys put off-limits.
-To mitigate this problem we can either use delegation, instead of sub-classing
-Hash, or we can privatize all the methods.
+that are undefined. So right off the bat a whole slew of hash
+keys will be off-limits, notably any public method already defined by
+Hash or Enumerable, Object or Kernel. That's a lot of keys.
+To mitigate this problem we can either use delegation inplace of
+sub-classing Hash, or we can privatize all the methods.
 
 --- coderay.ruby
 
@@ -45,14 +44,15 @@ Hash, or we can privatize all the methods.
 
 --- markdown
 
-The downside of course is that we no longer have access to any of the Hash
-methods --it's no longer a "Hash". So we have a bit of a catch-22.
-How much do we want OpenHash to get out of the way of potential keys
-and how much do we want access to the usual set of Hash methods?
+The downside of course is that we no longer have a "Hash" and 
+no thus access to any of the Hash methods. So here we have a bit
+of a catch-22. How much do we want OpenHash to get out of the way
+of potential keys and how much do we want access to the usual set
+of Hash methods?
 
-Even accepting this we have a more subtle issue. Any core extension
-method added to Hash, Enumerable (if we are sub-classing Hash), or
-Object and Kernel (in either case) by another library, *after* OpenHash
+Beyond this issue there is also a more subtle problem. Any core
+extension method added to Hash, Enumerable (if we are sub-classing Hash),
+or Object and Kernel (in either case), *after* OpenHash
 has already been defined, will create another exception that can't
 be anticipated. The only robust work around for this is to
 make OpenHash a subclass of BasicObject, which means we will have to
@@ -61,21 +61,21 @@ use delegation and Ruby 1.9 (or an emulative BlankSlate library).
 So now you might think, clearly these issues are the reason Ruby has
 OpenStruct (ostruct.rb) rather then this simple OpenHash class.
 However, it turns out that OpenStruct is little more than a delegated
-OpenHash and suffers all the same issues (as of Ruby 1.8.7 at least).
+OpenHash and suffers the same issues.
 
-Despite these issues it is tempting to think that simple classes like
-the above OpenHash are okay solutions in most cases. After all the chances
-of a name clash are fairly slim. I used to think that myself. But one day,
-as I considered using an OpenHash in production code, it dawned on me.
-Using a weak solution, just because it's "light-weight" and will *probably*
-be okay, is just asking for trouble. Even if all my pretty tests passed
-today, a simple change tomorrow in some far off dependency could stymie
-the whole works, and in such a way that it might not be so easily
+Despite these issues however it is tempting to think that simple classes
+like OpenHash are okay solutions in most cases. After all, the chances
+of a name clash are fairly slim. I used to think this way myself. But
+one day, as I considered using an OpenHash in production code, it dawned
+on me. Using a weak solution just because it's "light-weight" and will
+*probably* be okay is asking for trouble. Even if all my pretty tests
+passed today, a simple change tomorrow in some far off dependency could
+stymie the whole works, and in such a way that it might not be so easily
 noticed right away. Clearly, despite the temptation, it is much wiser
 to use a more robust solution, even if it seems less elegant.
 
-But let's not give up hope on our OpenHash just yet. As it turns out
-there is a reasonably robust solution to it's shortcomings: We can
+Thankfully, we don't need to give up on our OpenHash just yet. It turns
+out there is a reasonably robust solution to it's shortcomings: We can
 protect all newly defined keys.
 
 --- coderay.ruby
@@ -102,11 +102,10 @@ protect all newly defined keys.
 
 This will ensure that any set value will remain so, no matter what
 methods are previously defined or subsequently defined in superclasses.
-W00t! But wait... we now run another risk. We can't depend on any original 
-method always being available. The above code would even allow
+Great! But wait... we now run into another risk. We can't depend on any
+original method always being available. The above code could even allow
 <code>object_id = :you_loose</code>. Ouch! Clearly we need to add a few
-exceptions. We can do this in such a way as to make it easy to adjust the
-class to best suit our needs, by adding a new method #omit_slots.
+exceptions. We can do this by adding a new method called #omit_slots.
 
 --- coderay.ruby
 
@@ -122,17 +121,16 @@ class to best suit our needs, by adding a new method #omit_slots.
 
 --- markdown
 
-That will handle the most basic case. If we need an OpenHash with
+That will handle the most basic case. And if we need an OpenHash with
 more restrictive requirements we can just override #omit_slots, either
-via a singleton methods or by sub-classing OpenHash. Easy.
+via a singleton method or by sub-classing OpenHash. Easy.
 
-This pretty much mitigates all our issues with OpenHash, though there
-are certainly as few things we can yet do to spruce it up, such as 
-define and omit a #to_hash method. Even so, this implementation does
-leave us a bit straddled in at least one respect: We have to be very
-precise about what methods and keys we plan to use. That might not
-always be easy as we would like. So might there be a way to have our
-cake and eat it too?
+This pretty much mitigates all our issues with OpenHash, though certainly
+there are a few things we can yet do to spruce her up, such as define and
+omit a #to_hash method. Even so, this implementation does leave us a bit
+straddled in at least one respect: We have to be very precise about what
+methods/keys we plan to use. That might not always be easy as we would
+like. So might there be a way to have our cake and eat it too?
 
 If we are willing to give up just a little of the usual elegance,
 then we can. Ruby allows us to define methods ending in a <code>?</code>
@@ -170,7 +168,7 @@ so long as we end our look up methods with a question.
 
 --- markdown
 
-With OpenQuery we need only worry about a dozen or so core methods ending 
+With OpenQuery we need only worry about 20 or so core methods ending 
 in <code>?</code>.
 
 --- coderay.ruby
@@ -181,7 +179,7 @@ in <code>?</code>.
 
 --- markdown
 
-If these are really an issue, we can always add <code>#protect_slot</code> and
+If any of these are an issue, we can always add <code>#protect_slot</code> and
 <code>#omit_slots</code> to this solution as well.
 
 The OpenHash concept has been explored by others in the past. You can find
@@ -192,14 +190,14 @@ BasicObject then he'd have a pretty good solution on his hands.
 
 Ruby Facets also has a class called OpenObject. It is more robust
 than either OpenHash or OpenStruct in that it allows any method name
-to be set, and leaves only a few methods in place such as #each and
-#to_hash, but even these can, for better or worse, be overwritten
-by the setter.
+to be set, and leaves only a few methods in place such as <code>#each</code>
+and <code>#to_hash</code>, but even these can, for better or worse, be
+overwritten by the setter.
 
 So, returning to our original question, "Is OpenHash a bad idea?", we
 can happily say, "No". But only if we take great care in our design.
-As we have seen, there really is no perfect solution. There are
-trade-offs regardless of the solution chosen. Ultimately the key is
+There is no perfect solution here. We can get pretty close, but there
+are trade-offs regardless of the solution chosen. Ultimately the key is
 to know exactly your needs and the potential consequences of the solution
 you select, and code accordingly.
 

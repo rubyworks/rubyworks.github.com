@@ -1,0 +1,14 @@
+---
+title  : TracePoint 1.1.0
+author : trans
+tags   : tracepoint
+date   : 2009-12-26
+
+--- markdown
+
+<a href="http://rubyworks.github.com/tracepoint">TracePoint</a>
+is a Binding with the addition of event information. In theory
+it would function very well as the join-point for AOP. In practice
+it provides a much better approach to #set_trace_func. This release
+(finally!) adds multi-tracing and named traces.
+

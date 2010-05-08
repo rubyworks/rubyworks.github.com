@@ -1,0 +1,30 @@
+---
+layout    : false
+stencil   : liquid
+extension : .xml
+
+--- xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>RubyWorks Blog</title>
+ <link href="http://rubyworks.github.com/atom.xml" rel="self"/>
+ <link href="http://rubyworks.github.com/"/>
+ <updated>{{ site.time | date_to_xmlschema }}</updated>
+ <id>http://rubyworks.github.com/</id>
+
+ {% for post in site.posts %}
+ <entry>
+   <title>{{ post.title | xml_escape }}</title>
+   <link href="{{ site.url }}{{ post.url }}"/>
+   <updated>{{ post.date | date_to_xmlschema }}</updated>
+   <id>{{ site.url }}{{ post.id }}</id>
+   <content type="html">{{ post.summary | xml_escape }}
+     <p><a href="{{ site.url }}{{ post.url }}">Continue Reading...</a></p>
+   </content>
+ </entry>
+ {% endfor %}
+
+</feed>
+

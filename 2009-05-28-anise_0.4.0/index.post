@@ -1,0 +1,13 @@
+---
+title  : Anise 0.4.0
+author : trans
+tags   : ruby, anise
+date   : 2009-05-28
+
+--- markdown
+
+New release of <a href="http://rubyworks.github.com/anise">Anise</a>
+adds a callback method #annotation_added. It is a striaght-forward callback
+method patterned after Ruby's other built-in callbacks. The callback
+can be used to allow for the creation of "<i>active</i>" annotations.
+

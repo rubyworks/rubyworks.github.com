@@ -1,0 +1,124 @@
+
+<html>
+
+<head>
+  <title>Ruby Works</title>
+
+  <link REL="SHORTCUT ICON" HREF="../assets/images/ruby_1.jpg" />
+  <LINK REL=StyleSheet HREF="../assets/style.css" TYPE="text/css" MEDIA=screen>
+
+  <script type="text/javascript" src="../assets/jquery.js"></script>
+  <script type="text/javascript" src="../assets/rubyworks.js"></script>
+</head>
+
+<body>
+
+<div style="margin: 0 auto; width: 960px;">
+
+<!-- Title -->
+<div class="nav">
+
+  <table width="100%">
+  <tr>
+  <td class="nav-menu">
+    <a href="../index.html">Blog.read</a>
+    <a href="../projects.html">Self.inspect</a>
+    <a href="../rubynew.html">Ruby.new</a>
+    <a href="http://github.com/rubyworks/">Github.com</a>
+  </td>
+  <td class="search-box">
+    <FORM method="GET" action="http://www.google.com/group/ruby-talk-google/search?hl=en" target="_blank">
+    <!-- Search Google -->
+    <input type="text" name="q" size="25" maxlength="255" value="" class="search-input" />
+    <input type="hidden" name="hl" value="en" />
+    <input type="hidden" name="group" value="ruby-talk-google" />
+    <input type="submit" name="qt_g" VALUE="Search Ruby-Talk" />
+    <!-- Search Google -->
+    </FORM>
+  </td>
+  </tr>
+  </table>
+
+</div>
+
+<div style="padding: 30px; background: white;">
+
+
+<div class="page">
+
+  <div class="title"><a href="">String::Mask 0.3.0</a></div>
+
+  <p>String::Mask provides a tool for manipulating strings
+in a logicomathematical manner (e.g. add, subtract, xor)
+using <i>masks</i>. This new release simply changes #to_s
+and #inspect to return strings with the mask character
+re-inserted. Here are some examples.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>
+  require <span style="background-color:#fff0f0;color:#D20"><span style="color:#710">'</span><span style="">strmask</span><span style="color:#710">'</span></span>
+
+  m1 = <span style="background-color:#fff0f0;color:#D20"><span style="color:#710">&quot;</span><span style="">abc..123</span><span style="color:#710">&quot;</span></span>.to_mask(<span style="background-color:#fff0f0;color:#D20"><span style="color:#710">'</span><span style="">.</span><span style="color:#710">'</span></span>)
+  m2 = <span style="background-color:#fff0f0;color:#D20"><span style="color:#710">&quot;</span><span style="">ab..789.</span><span style="color:#710">&quot;</span></span>.to_mask(<span style="background-color:#fff0f0;color:#D20"><span style="color:#710">'</span><span style="">.</span><span style="color:#710">'</span></span>)
+
+  m1 - m2  <span style="color:#888">#=&gt; &quot;....789.&quot;</span>
+  m1 + m2  <span style="color:#888">#=&gt; &quot;abc.7893&quot;</span>
+  m1 * m2  <span style="color:#888">#=&gt; &quot;ab..789.&quot;</span>
+  m1 ^ m2  <span style="color:#888">#=&gt; &quot;..c.7..3&quot;</span>
+  m1 % m2  <span style="color:#888">#=&gt; &quot;abc..123&quot;</span>
+
+</pre></div>
+</div>
+
+<p>This library was originally written to expirement with genetic
+algorithms. It is a very generic set of functions. No doubt
+there are many other potential uses.</p>
+
+
+  <small>Written by trans, 2010-04-18</small>
+
+  <ul class="posts">
+    
+    
+  </ul>
+
+  <script>
+  var idcomments_acct = '1e97cd0a25f01bb50181e727255ddffb';
+  var idcomments_post_id;
+  var idcomments_post_url;
+  </script>
+  <span id="IDCommentsPostTitle" style="display:none"></span>
+  <script type='text/javascript' src='http://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+
+</div>
+
+
+
+<br/><br/>
+
+<div style="text-align: center;">
+  <script type="text/javascript"><!--
+  google_ad_client = "pub-1126154564663472";
+  /* RUBYWORKS 09-10-02 728x90 */
+  google_ad_slot = "0788888658";
+  google_ad_width = 728;
+  google_ad_height = 90;
+  //-->
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+</div>
+
+<br/><br/>
+
+<div class="footer">
+(c) 2002 Thomas Sawyer, All Rights Reserved. Special Thanks to Dieter Stein for the Ruby icon.
+Graphic image is "Serpent" by Ruby Lee.
+</div>
+
+</body>
+
+</div>
+</html>
+

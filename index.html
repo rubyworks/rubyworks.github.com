@@ -49,46 +49,147 @@
 
   <div class="post">
     <div class="title">
-      <span class="date" style="float: right; padding-top: 5px;">2010-04-14</span>
-      <a href="/2010/open-hash/index.html">Is OpenHash a Bad Idea?</a>
+      <span class="date" style="float: right; padding-top: 5px;">2010-05-08</span>
+      <a href="/2010-05-08-hashery_and_mixers/index.html">Hashery and Mixers</a>
     </div>
     <div class="btext">
-      <p>A long time ago, in an now long forgotten thread, a ruby-talk poster
-asked, "what's all the fuss over these open classes? If you
-really need something like that just open up a Hash and add method_missing",
-or something to that effect. It seemed a reasonable comment, and for some
-time after that I thought this poster made a good point. For simple needs
-an "OpenHash" seems like a good light-weight solution, useful to many cases.</p>
+      <p>Perhaps you've already heard that Ruby Facets is filtering it's arsenal
+of code to provide ONLY core and standard library extension methods.
+This means a number of classes and modules that remained in Ruby Facets
+after the last "<i>MORE library clean-Up</i>" have to move out. The question
+is, where to?</p>
 
-<p>The simplest implementation looks something like this:</p>
+<p>Somewhat surprisingly, much of the remaining MORE library's classes and
+modules fall into two categories, and based on this have found their way
+into two new spin-off projects: The <a href="http://rubyworks.github.com/hashery">Ruby Hashery</a>
+and <a href="http://rubyworks.github.com/mixers">Ruby Mixers</a>.
+In both projects are found a small collection of nicely related libraries.
+In Hashery, it is a collection of Hash-like classes. While in Mixers, it
+is a collection of mixin modules. Be sure to check them out. If you were
+using any of these libraries before, now you know where to find them
+when Facets 3.0 comes out.</p>
 
     </div>
-    <p><a href="/2010/open-hash/index.html">Continue Reading</a></p>
+    <p><a href="/2010-05-08-hashery_and_mixers/index.html">Continue Reading</a></p>
     <!-- <small>Written by trans</small> -->
   </div>
   <br/><br/>
 
   <div class="post">
     <div class="title">
-      <span class="date" style="float: right; padding-top: 5px;">2010-04-13</span>
-      <a href="/2010/module-inheritence/index.html">A Case for Module Inheritence</a>
+      <span class="date" style="float: right; padding-top: 5px;">2010-04-18</span>
+      <a href="/2010-04-18-strmask_1.0.0/index.html">String::Mask 0.3.0</a>
     </div>
     <div class="btext">
-      <p>I love beautifully written code. Unfortunately the realities of the
-language sometimes clash with requirements of the implementation. While
-Ruby goes a long way toward making beautifully written code common place.
-It still has some shortcomings I'd like to see improved.</p>
-
-<p>Case in point are my endeaors of the last few days. I've been struggling
-to re-structure the code of the <a href="http://github.com/rubyworks/english/">English</a>
-project. The primary puporse of the project is to provide extension methods to String,
-pertaining to the English language. A good exmample are number inflection
-methods #singluar and #plural. At the same time I am trying to design
-the library in such a way that other language modules can be built following
-the same basic structure, and they could all work together if need be.</p>
+      <p>String::Mask provides a tool for manipulating strings
+in a logicomathematical manner (e.g. add, subtract, xor)
+using <i>masks</i>. This new release simply changes #to_s
+and #inspect to return strings with the mask character
+re-inserted. Here are some examples.</p>
 
     </div>
-    <p><a href="/2010/module-inheritence/index.html">Continue Reading</a></p>
+    <p><a href="/2010-04-18-strmask_1.0.0/index.html">Continue Reading</a></p>
+    <!-- <small>Written by trans</small> -->
+  </div>
+  <br/><br/>
+
+  <div class="post">
+    <div class="title">
+      <span class="date" style="float: right; padding-top: 5px;">2010-04-14</span>
+      <a href="/2010-04-14-open_hash/index.html">Is OpenHash a Bad Idea?</a>
+    </div>
+    <div class="btext">
+      <p>A long time ago, in an now long forgotten ruby-talk thread, a poster
+asked, "what's all the fuss over these open classes? If you
+really need something like that just open up a Hash and add method_missing",
+or something to that effect. It seemed a reasonable comment. And for some
+time after I thought the poster made a good point: for simple needs
+an "OpenHash" is a good light-weight solution, useful to many cases.
+The basic implementation of an OpenHash is as follows.</p>
+
+    </div>
+    <p><a href="/2010-04-14-open_hash/index.html">Continue Reading</a></p>
+    <!-- <small>Written by trans</small> -->
+  </div>
+  <br/><br/>
+
+  <div class="post">
+    <div class="title">
+      <span class="date" style="float: right; padding-top: 5px;">2010-04-06</span>
+      <a href="/2010-04-06-paramix_2.0.0/index.html">Paramix 2.0.0</a>
+    </div>
+    <div class="btext">
+      <p>Thanks to a conversation with Jonathan Rochkind,
+<a href="http://rubyworks.github.com/anise">Paramix</a>
+has been completely rewritten.  Whereas anonymous modules
+were avoided in prior versions, it has become clear that
+the worries of memory consumption that would accompany them
+were largely unfounded. The new code is refreshingly concise,
+and the design fully comforms to POLS.</p>
+
+    </div>
+    <p><a href="/2010-04-06-paramix_2.0.0/index.html">Continue Reading</a></p>
+    <!-- <small>Written by trans</small> -->
+  </div>
+  <br/><br/>
+
+  <div class="post">
+    <div class="title">
+      <span class="date" style="float: right; padding-top: 5px;">2010-02-22</span>
+      <a href="/2010-02-22-vanunits_1.0.0/index.html">VanUnits 1.0.0</a>
+    </div>
+    <div class="btext">
+      <p>VanUnits is the SI units system originally underpinning Stick.
+Stick has implemented a new <i>experimental</i> unit system,
+so the prior system, which remains a very competent and useful
+system, is being spun-off as VanUnits, named after the primary
+designer Peter Vanbroekhoven.</p>
+
+<p>The components included are the base unit system, the
+currency system (which needs an online backend to function),
+and a set of scientific constants utilizing the units.</p>
+
+    </div>
+    <p><a href="/2010-02-22-vanunits_1.0.0/index.html">Continue Reading</a></p>
+    <!-- <small>Written by trans</small> -->
+  </div>
+  <br/><br/>
+
+  <div class="post">
+    <div class="title">
+      <span class="date" style="float: right; padding-top: 5px;">2009-12-26</span>
+      <a href="/2009-12-26-tracepoint_1.1.0/index.html">TracePoint 1.1.0</a>
+    </div>
+    <div class="btext">
+      <p><a href="http://rubyworks.github.com/tracepoint">TracePoint</a>
+is a Binding with the addition of event information. In theory
+it would function very well as the join-point for AOP. In practice
+it provides a much better approach to #set_trace_func. This release
+(finally!) adds multi-tracing and named traces.</p>
+
+    </div>
+    <p><a href="/2009-12-26-tracepoint_1.1.0/index.html">Continue Reading</a></p>
+    <!-- <small>Written by trans</small> -->
+  </div>
+  <br/><br/>
+
+  <div class="post">
+    <div class="title">
+      <span class="date" style="float: right; padding-top: 5px;">2009-12-01</span>
+      <a href="/2009-12-01-xdg_1.0.0/index.html">XDG 1.0.0</a>
+    </div>
+    <div class="btext">
+      <p>This is a major re-implementation of the <a href="http://rubyworks.github.com/xdg">XDG</a>
+API to be more flexible and object-oriented. Instead of a single module with every
+needed method, the system is divided up into sub-modules, one for each set of XDG
+locations. So, for example, instead of "XDG.data_dirs" you use "XDG::Data.dirs"
+or "XDG.data.dirs".</p>
+
+<p>Would love to get feedback on this project, especially suggestions on how it can be
+enhanced to support more aspects of XDG standards.</p>
+
+    </div>
+    <p><a href="/2009-12-01-xdg_1.0.0/index.html">Continue Reading</a></p>
     <!-- <small>Written by trans</small> -->
   </div>
   <br/><br/>
@@ -96,7 +197,7 @@ the same basic structure, and they could all work together if need be.</p>
   <div class="post">
     <div class="title">
       <span class="date" style="float: right; padding-top: 5px;">2009-09-30</span>
-      <a href="/2009/functor/index.html">The Facetnating Functor</a>
+      <a href="/2009-09-30-functor/index.html">The Facetnating Functor</a>
     </div>
     <div class="btext">
       <p>In Ruby 1.9, Enumerable methods return an Enumerator when no block is provided them.
@@ -104,7 +205,7 @@ This makes it very convenient to chain methods in what is often called <em>fluid
 For example, rather than the usual <code>#each_with_index</code>, one can use:</p>
 
     </div>
-    <p><a href="/2009/functor/index.html">Continue Reading</a></p>
+    <p><a href="/2009-09-30-functor/index.html">Continue Reading</a></p>
     <!-- <small>Written by trans</small> -->
   </div>
   <br/><br/>
@@ -112,7 +213,7 @@ For example, rather than the usual <code>#each_with_index</code>, one can use:</
   <div class="post">
     <div class="title">
       <span class="date" style="float: right; padding-top: 5px;">2009-08-24</span>
-      <a href="/2009/new-website/index.html">RubyWorks::Website.new</a>
+      <a href="/2009-08-24-new_website/index.html">RubyWorks::Website.new</a>
     </div>
     <div class="btext">
       <p>Recently I set out to migrate most of my work from Rubyforge to GitHub, in so doing I needed a umbrella account to place all these
@@ -134,7 +235,24 @@ of these projects please hop over the the <a href="http://googlegroups.com/group
 just for that purpose.</p>
 
     </div>
-    <p><a href="/2009/new-website/index.html">Continue Reading</a></p>
+    <p><a href="/2009-08-24-new_website/index.html">Continue Reading</a></p>
+    <!-- <small>Written by trans</small> -->
+  </div>
+  <br/><br/>
+
+  <div class="post">
+    <div class="title">
+      <span class="date" style="float: right; padding-top: 5px;">2009-05-28</span>
+      <a href="/2009-05-28-anise_0.4.0/index.html">Anise 0.4.0</a>
+    </div>
+    <div class="btext">
+      <p>New release of <a href="http://rubyworks.github.com/anise">Anise</a>
+adds a callback method #annotation_added. It is a striaght-forward callback
+method patterned after Ruby's other built-in callbacks. The callback
+can be used to allow for the creation of "<i>active</i>" annotations.</p>
+
+    </div>
+    <p><a href="/2009-05-28-anise_0.4.0/index.html">Continue Reading</a></p>
     <!-- <small>Written by trans</small> -->
   </div>
   <br/><br/>
@@ -142,7 +260,7 @@ just for that purpose.</p>
   <div class="post">
     <div class="title">
       <span class="date" style="float: right; padding-top: 5px;">2008-11-23</span>
-      <a href="/2008/hash-rekey/index.html">Facets Hash#rekey</a>
+      <a href="/2008-11-23-hash_rekey/index.html">Facets Hash#rekey</a>
     </div>
     <div class="btext">
       <p>This is the first in a series of posts in which I plan to introduce my fellow Rubyists to the plethora or goodness that is <a href="http://facets.rubyforge.org">Ruby Facets</a>.</p>
@@ -157,57 +275,8 @@ I decided to start with something quite simple, but very useful, homogenizing ha
 
 
     </div>
-    <p><a href="/2008/hash-rekey/index.html">Continue Reading</a></p>
+    <p><a href="/2008-11-23-hash_rekey/index.html">Continue Reading</a></p>
     <!-- <small>Written by trans</small> -->
-  </div>
-  <br/><br/>
-
-  <div class="post">
-    <div class="title">
-      <span class="date" style="float: right; padding-top: 5px;">2008-10-06</span>
-      <a href="/2008/old-hash/index.html">This Old Hash</a>
-    </div>
-    <div class="btext">
-      <p>The Hash may well be the most used class in Ruby. Sure, our programs
-have arrays and strings galore, but they generally come and go without
-much ado. Hashes on the other hand get <em>used</em>; and by that I mean to
-say, we spend a lot of time fussing with them. I think there are two
-significant reasons for this and I will focus on the first, and
-the more important of the two, here.</p>
-
-<p>Now, I suspect you would agree, if I were to present you with a class
-which was clearly overkill for vast majority of its intended uses, and
-its use required repeated mitigation of its unused features, I have no
-doubt, you'd unequivocally advise me to select a "<i>better tool for the job</i>".
-And yet, that's the situation all Ruby programmers face, day in and
-day out, with Ruby's Hash.</p>
-
-<p>Ruby's Hash is exceptionally powerful because it supports any type of
-object as a hash key. That's really really cool... for all of about
-five minutes. The truth is, the vast majority of cases only require
-one type of key --for Ruby that will either be a Symbol or a String,
-and because of this, a great deal of time and code is wasted ensuring
-all keys are that single type. Because of this, methods like
-<code>#to_sym</code> often riddle our scripts.</p>
-
-<p>The issue is undeniably attested to by real world "solutions"
-others have created to address it, such as Ruby Facets'
-<a href="http://facets.rubyforge.org/doc/api/core/classes/Hash.html#M000124">Hash#rekey</a>.
-and Ruby on Rails'
-<a href="http://api.rubyonrails.org/classes/HashWithIndifferentAccess.html">HashWithIndifferentAccess</a>.
-But let's face it, these are both underwhelming attempts at mitigating
-the fundamental problem.</p>
-
-<p>A real solution would have the current Hash class renamed, and a new
-limited-key structure put in its place. The old class would still be
-available, of course, for those special cases when a key of any object
-type is required, but the new, more utilitarian Hash class would be
-the literally-constructed default. The end effect of this change would
-be simple:</p>
-
-    </div>
-    <p><a href="/2008/old-hash/index.html">Continue Reading</a></p>
-    <!-- <small>Written by Anonymous</small> -->
   </div>
   <br/><br/>
 
