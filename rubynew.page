@@ -1,6 +1,7 @@
 ---
 title   : RubyWorks Projects
 stencil : rhtml
+layout  : page
 
 --- html
 

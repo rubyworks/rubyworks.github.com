@@ -1,3 +1,47 @@
+<html>
+
+<head>
+  <title>Ruby Works</title>
+
+  <link REL="SHORTCUT ICON" HREF="/assets/images/ruby_1.jpg" />
+  <link REL="styleSheet" href="/assets/style.css" TYPE="text/css" MEDIA="screen"/>
+
+  <script type="text/javascript" src="/assets/jquery.js"></script>
+  <script type="text/javascript" src="/assets/rubyworks.js"></script>
+</head>
+
+<body>
+
+<div style="margin: 0 auto; width: 960px;">
+
+<!-- Title -->
+<div class="nav">
+
+  <table width="100%">
+  <tr>
+  <td class="nav-menu">
+    <a href="/index.html">Blog.read</a>
+    <a href="/projects.html">Projects.list</a>
+    <a href="/rubynew.html">Ruby.new</a>
+    <a href="http://github.com/rubyworks/">GitHub.com</a>
+  </td>
+  <td class="search-box">
+    <FORM method="GET" action="http://www.google.com/group/ruby-talk-google/search?hl=en" target="_blank">
+    <!-- Search Google -->
+    <input type="text" name="q" size="25" maxlength="255" value="" class="search-input" />
+    <input type="hidden" name="hl" value="en" />
+    <input type="hidden" name="group" value="ruby-talk-google" />
+    <input type="submit" name="qt_g" VALUE="Search Ruby-Talk" />
+    <!-- Search Google -->
+    </FORM>
+  </td>
+  </tr>
+  </table>
+
+</div>
+
+<div style="padding: 50px; background: white; box-shadow: 10px 10px 5px #511; -moz-box-shadow: 10px 10px 5px #511;">
+
 
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -11,7 +55,7 @@
  
  <entry>
    <title>Hashery and Mixers</title>
-   <link href="http://rubyworks.github.com/2010-05-08-hashery_and_mixers/index.html"/>
+   <link href="http://rubyworks.github.com2010-05-08-hashery_and_mixers/index.html"/>
    <updated>2010-05-08</updated>
    <id>http://rubyworks.github.com</id>
    <content type="html"><p>Perhaps you've already heard that Ruby Facets is filtering it's arsenal
@@ -30,13 +74,13 @@ is a collection of mixin modules. Be sure to check them out. If you were
 using any of these libraries before, now you know where to find them
 when Facets 3.0 comes out.</p>
 
-     <p><a href="http://rubyworks.github.com/2010-05-08-hashery_and_mixers/index.html">Continue Reading...</a></p>
+     <p><a href="http://rubyworks.github.com2010-05-08-hashery_and_mixers/index.html">Continue Reading...</a></p>
    </content>
  </entry>
  
  <entry>
    <title>String::Mask 0.3.0</title>
-   <link href="http://rubyworks.github.com/2010-04-18-strmask_1.0.0/index.html"/>
+   <link href="http://rubyworks.github.com2010-04-18-strmask_0.3.0/index.html"/>
    <updated>2010-04-18</updated>
    <id>http://rubyworks.github.com</id>
    <content type="html"><p>String::Mask provides a tool for manipulating strings
@@ -45,13 +89,13 @@ using <i>masks</i>. This new release simply changes #to_s
 and #inspect to return strings with the mask character
 re-inserted. Here are some examples.</p>
 
-     <p><a href="http://rubyworks.github.com/2010-04-18-strmask_1.0.0/index.html">Continue Reading...</a></p>
+     <p><a href="http://rubyworks.github.com2010-04-18-strmask_0.3.0/index.html">Continue Reading...</a></p>
    </content>
  </entry>
  
  <entry>
    <title>Is OpenHash a Bad Idea?</title>
-   <link href="http://rubyworks.github.com/2010-04-14-open_hash/index.html"/>
+   <link href="http://rubyworks.github.com2010-04-14-open_hash/index.html"/>
    <updated>2010-04-14</updated>
    <id>http://rubyworks.github.com</id>
    <content type="html"><p>A long time ago, in an now long forgotten ruby-talk thread, a poster
@@ -62,13 +106,13 @@ time after I thought the poster made a good point: for simple needs
 an "OpenHash" is a good light-weight solution, useful to many cases.
 The basic implementation of an OpenHash is as follows.</p>
 
-     <p><a href="http://rubyworks.github.com/2010-04-14-open_hash/index.html">Continue Reading...</a></p>
+     <p><a href="http://rubyworks.github.com2010-04-14-open_hash/index.html">Continue Reading...</a></p>
    </content>
  </entry>
  
  <entry>
    <title>Paramix 2.0.0</title>
-   <link href="http://rubyworks.github.com/2010-04-06-paramix_2.0.0/index.html"/>
+   <link href="http://rubyworks.github.com2010-04-06-paramix_2.0.0/index.html"/>
    <updated>2010-04-06</updated>
    <id>http://rubyworks.github.com</id>
    <content type="html"><p>Thanks to a conversation with Jonathan Rochkind,
@@ -79,13 +123,13 @@ the worries of memory consumption that would accompany them
 were largely unfounded. The new code is refreshingly concise,
 and the design fully comforms to POLS.</p>
 
-     <p><a href="http://rubyworks.github.com/2010-04-06-paramix_2.0.0/index.html">Continue Reading...</a></p>
+     <p><a href="http://rubyworks.github.com2010-04-06-paramix_2.0.0/index.html">Continue Reading...</a></p>
    </content>
  </entry>
  
  <entry>
    <title>VanUnits 1.0.0</title>
-   <link href="http://rubyworks.github.com/2010-02-22-vanunits_1.0.0/index.html"/>
+   <link href="http://rubyworks.github.com2010-02-22-vanunits_1.0.0/index.html"/>
    <updated>2010-02-22</updated>
    <id>http://rubyworks.github.com</id>
    <content type="html"><p>VanUnits is the SI units system originally underpinning Stick.
@@ -98,13 +142,13 @@ designer Peter Vanbroekhoven.</p>
 currency system (which needs an online backend to function),
 and a set of scientific constants utilizing the units.</p>
 
-     <p><a href="http://rubyworks.github.com/2010-02-22-vanunits_1.0.0/index.html">Continue Reading...</a></p>
+     <p><a href="http://rubyworks.github.com2010-02-22-vanunits_1.0.0/index.html">Continue Reading...</a></p>
    </content>
  </entry>
  
  <entry>
    <title>TracePoint 1.1.0</title>
-   <link href="http://rubyworks.github.com/2009-12-26-tracepoint_1.1.0/index.html"/>
+   <link href="http://rubyworks.github.com2009-12-26-tracepoint_1.1.0/index.html"/>
    <updated>2009-12-26</updated>
    <id>http://rubyworks.github.com</id>
    <content type="html"><p><a href="http://rubyworks.github.com/tracepoint">TracePoint</a>
@@ -113,13 +157,13 @@ it would function very well as the join-point for AOP. In practice
 it provides a much better approach to #set_trace_func. This release
 (finally!) adds multi-tracing and named traces.</p>
 
-     <p><a href="http://rubyworks.github.com/2009-12-26-tracepoint_1.1.0/index.html">Continue Reading...</a></p>
+     <p><a href="http://rubyworks.github.com2009-12-26-tracepoint_1.1.0/index.html">Continue Reading...</a></p>
    </content>
  </entry>
  
  <entry>
    <title>XDG 1.0.0</title>
-   <link href="http://rubyworks.github.com/2009-12-01-xdg_1.0.0/index.html"/>
+   <link href="http://rubyworks.github.com2009-12-01-xdg_1.0.0/index.html"/>
    <updated>2009-12-01</updated>
    <id>http://rubyworks.github.com</id>
    <content type="html"><p>This is a major re-implementation of the <a href="http://rubyworks.github.com/xdg">XDG</a>
@@ -131,26 +175,26 @@ or "XDG.data.dirs".</p>
 <p>Would love to get feedback on this project, especially suggestions on how it can be
 enhanced to support more aspects of XDG standards.</p>
 
-     <p><a href="http://rubyworks.github.com/2009-12-01-xdg_1.0.0/index.html">Continue Reading...</a></p>
+     <p><a href="http://rubyworks.github.com2009-12-01-xdg_1.0.0/index.html">Continue Reading...</a></p>
    </content>
  </entry>
  
  <entry>
    <title>The Facetnating Functor</title>
-   <link href="http://rubyworks.github.com/2009-09-30-functor/index.html"/>
+   <link href="http://rubyworks.github.com2009-09-30-functor/index.html"/>
    <updated>2009-09-30</updated>
    <id>http://rubyworks.github.com</id>
    <content type="html"><p>In Ruby 1.9, Enumerable methods return an Enumerator when no block is provided them.
 This makes it very convenient to chain methods in what is often called <em>fluid notation</em>.
 For example, rather than the usual <code>#each_with_index</code>, one can use:</p>
 
-     <p><a href="http://rubyworks.github.com/2009-09-30-functor/index.html">Continue Reading...</a></p>
+     <p><a href="http://rubyworks.github.com2009-09-30-functor/index.html">Continue Reading...</a></p>
    </content>
  </entry>
  
  <entry>
    <title>RubyWorks::Website.new</title>
-   <link href="http://rubyworks.github.com/2009-08-24-new_website/index.html"/>
+   <link href="http://rubyworks.github.com2009-08-24-new_website/index.html"/>
    <updated>2009-08-24</updated>
    <id>http://rubyworks.github.com</id>
    <content type="html"><p>Recently I set out to migrate most of my work from Rubyforge to GitHub, in so doing I needed a umbrella account to place all these
@@ -171,13 +215,13 @@ still usable.</p>
 of these projects please hop over the the <a href="http://googlegroups.com/group/rubyworks-mailinglist">Google Group</a>. I setup the group
 just for that purpose.</p>
 
-     <p><a href="http://rubyworks.github.com/2009-08-24-new_website/index.html">Continue Reading...</a></p>
+     <p><a href="http://rubyworks.github.com2009-08-24-new_website/index.html">Continue Reading...</a></p>
    </content>
  </entry>
  
  <entry>
    <title>Anise 0.4.0</title>
-   <link href="http://rubyworks.github.com/2009-05-28-anise_0.4.0/index.html"/>
+   <link href="http://rubyworks.github.com2009-05-28-anise_0.4.0/index.html"/>
    <updated>2009-05-28</updated>
    <id>http://rubyworks.github.com</id>
    <content type="html"><p>New release of <a href="http://rubyworks.github.com/anise">Anise</a>
@@ -185,13 +229,13 @@ adds a callback method #annotation_added. It is a striaght-forward callback
 method patterned after Ruby's other built-in callbacks. The callback
 can be used to allow for the creation of "<i>active</i>" annotations.</p>
 
-     <p><a href="http://rubyworks.github.com/2009-05-28-anise_0.4.0/index.html">Continue Reading...</a></p>
+     <p><a href="http://rubyworks.github.com2009-05-28-anise_0.4.0/index.html">Continue Reading...</a></p>
    </content>
  </entry>
  
  <entry>
    <title>Facets Hash#rekey</title>
-   <link href="http://rubyworks.github.com/2008-11-23-hash_rekey/index.html"/>
+   <link href="http://rubyworks.github.com2008-11-23-hash_rekey/index.html"/>
    <updated>2008-11-23</updated>
    <id>http://rubyworks.github.com</id>
    <content type="html"><p>This is the first in a series of posts in which I plan to introduce my fellow Rubyists to the plethora or goodness that is <a href="http://facets.rubyforge.org">Ruby Facets</a>.</p>
@@ -205,10 +249,41 @@ Okay, now to the meat of this edition...
 I decided to start with something quite simple, but very useful, homogenizing hash keys. Currently in Ruby, this requires code like:</p>
 
 
-     <p><a href="http://rubyworks.github.com/2008-11-23-hash_rekey/index.html">Continue Reading...</a></p>
+
+
+     <p><a href="http://rubyworks.github.com2008-11-23-hash_rekey/index.html">Continue Reading...</a></p>
    </content>
  </entry>
  
 
 </feed>
 
+
+
+<br/><br/>
+
+<div style="text-align: center;">
+  <script type="text/javascript"><!--
+  google_ad_client = "pub-1126154564663472";
+  /* RUBYWORKS 09-10-02 728x90 */
+  google_ad_slot = "0788888658";
+  google_ad_width = 728;
+  google_ad_height = 90;
+  //-->
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+</div>
+
+<br/><br/>
+
+<div class="footer">
+(c) 2002 Thomas Sawyer, All Rights Reserved. Special Thanks to Dieter Stein for the Ruby icon.
+Graphic image is "Serpent" by Ruby Lee.
+</div>
+
+</body>
+
+</div>
+</html>

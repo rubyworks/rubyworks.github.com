@@ -2,7 +2,8 @@
 layout  : page
 title   : Rubyworks
 stencil : liquid
----
+
+--- html
 
 <div class="page">
 

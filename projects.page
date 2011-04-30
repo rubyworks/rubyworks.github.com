@@ -1,12 +1,13 @@
 ---
 title   : RubyWorks Projects
 stencil : rhtml
+layout  : page
 
 --- html
 
 <%
   require 'pom'
-  dirs = Dir['../*'] - ['../rubyworks.github.com', '../opendsl', '../live']
+  dirs = Dir['../*'] - ['RubyWorks', '../rubyworks.github.com', '../opendsl', '../live']
   @projects = []
   dirs.each do |d|
     puts "Load: #{d}" if $DEBUG
@@ -23,7 +24,7 @@ stencil : rhtml
   end
 %>
 
-<div class="title">Self.inspect</div>
+<div class="title">Projects.list</div>
 
 <br/>
 
@@ -31,7 +32,7 @@ stencil : rhtml
   <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
       <a href="http://github.com/rubyworks/<%= prj.metadata.name %>/tree/master">
-        <img src="<%= root %>assets/images/octocat48.jpg" height="32px" />
+        <img src="/assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">

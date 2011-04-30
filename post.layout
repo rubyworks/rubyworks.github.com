@@ -2,21 +2,21 @@
 stencil: liquid
 layout : page
 
---- html
+--- html 
 
 <div class="page">
 
-  <div class="title"><a href="{{ post.url }}">{{ page.title }}</a></div>
+  <div class="title"><a href="{{ url }}">{{ title }}</a></div>
 
-  {{ content }}
+  {{ yield }}
 
-  <small>Written by {{ page.author }}, {{ page.date | date_to_string }}</small>
+  <small>Written by {{ author }}, {{ date | date_to_string }}</small>
 
   <ul class="posts">
-    {% assign p = page.previous %}{% if p %}
+    {% assign p = back_post %}{% if p %}
     <li><span>Previous: {{ p.date | date_to_string }}</span> &raquo; <a href="{{ p.url }}">{{ p.title }}</a></li>
     {% endif %}
-    {% assign p = page.next %}{% if p %}
+    {% assign p = next_post %}{% if p %}
     <li><span> Next: {{ p.date | date_to_string }}</span> &raquo; <a href="{{ p.url }}">{{ p.title }}</a></li>
     {% endif %}
   </ul>
