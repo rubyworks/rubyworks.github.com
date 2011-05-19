@@ -1,0 +1,19 @@
+.Syntax .normal { color: #111; }
+.Syntax .comment { color: #005; font-style: italic; }
+.Syntax .keyword { color: #A44; font-weight: bold; }
+.Syntax .method { color: #44f; }
+.Syntax .class { color: #0c4; }
+.Syntax .module { color: #050; }
+.Syntax .punct { color: #668; font-weight: bold; }
+.Syntax .symbol { color: #220; }
+.Syntax .string { color: #4f4; }
+.Syntax .char { color: #F07; }
+.Syntax .ident { color: #111; }
+.Syntax .constant { color: #0c4; }
+.Syntax .regex { color: #B66; background: #FEF; }
+.Syntax .number { color: #F99; }
+.Syntax .attribute { color: #fc4; }
+.Syntax .global { color: #7FB; }
+.Syntax .expr { color: #227; }
+.Syntax .escape { color: #277; }
+
