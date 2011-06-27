@@ -13,6 +13,19 @@ stencil: liquid
 
   <script type="text/javascript" src="/assets/jquery.js"></script>
   <script type="text/javascript" src="/assets/rubyworks.js"></script>
+
+  <!-- flattr -->
+  <script type="text/javascript">
+  /* <![CDATA[ */
+      (function() {
+          var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+          s.type = 'text/javascript';
+          s.async = true;
+          s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+          t.parentNode.insertBefore(s, t);
+      })();
+  /* ]]> */
+  </script>
 </head>
 
 <body>
@@ -26,7 +39,7 @@ stencil: liquid
   <tr>
   <td class="nav-menu">
     <a href="/index.html">Blog.read</a>
-    <a href="/projects.html">Projects.list</a>
+    <a href="/projects.html">Project.list</a>
     <a href="/rubynew.html">Ruby.new</a>
     <a href="http://github.com/rubyworks/">GitHub.com</a>
   </td>
@@ -42,6 +55,22 @@ stencil: liquid
   </td>
   </tr>
   </table>
+
+  <div style="float: right; padding-top: 30px; padding-left: 10px;">
+    <a class="FlattrButton" style="display:none;" href="http://rubyworks.github.com"></a>
+    <noscript>
+      <a href="http://flattr.com/thing/324911/Rubyworks-Ruby-Development-Fund" target="_blank">
+        <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" />
+      </a>
+    </noscript>
+  </div>
+
+  <div style="float: right; padding-top: 40px;">
+  <a href='http://www.pledgie.com/campaigns/15553'>
+    <img alt='Click here to lend your support to: Rubyworks Ruby Development Fund and make a donation at www.pledgie.com !'
+         src='http://www.pledgie.com/campaigns/15553.png?skin_name=chrome' border='0' />
+  </a>
+  </div>
 
 </div>
 
@@ -76,4 +105,3 @@ Graphic image is "Serpent" by Ruby Lee.
 
 </div>
 </html>
-
