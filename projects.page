@@ -6,20 +6,16 @@ layout  : page
 --- html
 
 <%
-  require 'pom'
-  dirs = Dir['../*'] - ['RubyWorks', '../rubyworks.github.com', '../opendsl', '../live']
+  files = Dir['../{*,*/*}/.ruby']
   @projects = []
-  dirs.each do |d|
-    puts "Load: #{d}" if $DEBUG
+  files.each do |f|
+    puts "Load: #{f}" if $DEBUG
     begin
-      prj = POM::Project.new(d)
-      if prj.metadata.valid?
-        @projects << prj
-      else
-        puts "Invalid POM for #{d}"
-      end
+      data = YAML.load(File.new(f))
+      raise unless data['name']
+      @projects << data
     rescue
-      puts "Can't load POM for #{d}"
+      puts "Can't load #{f}"
     end
   end
 %>
@@ -28,18 +24,22 @@ layout  : page
 
 <br/>
 
-<% @projects.sort{ |a,b| a.metadata.name <=> b.metadata.name }.each do |prj| %>
+<% @projects.sort!{ |a,b| a['name'] <=> b['name'] } %>
+<% @projects.each do |prj| %>
+  <% resources = (prj['resources'] || {}) %>
+
   <div class="project-list" style="border: 1px solid #ccc; padding: 20px;">
     <div class="links" style="float: right;">
-      <a href="http://github.com/rubyworks/<%= prj.metadata.name %>/tree/master">
+      <a href="http://github.com/rubyworks/<%= prj['name'] %>/tree/master">
         <img src="/assets/images/octocat48.jpg" height="32px" />
       </a>
     </div>
     <h1 style="margin: 0 0 10px 0;">
-      <a href="<%= prj.metadata.homepage %>"><%= prj.metadata.title %></a>
+      <a href="<%= resources['home'] %>"><%= prj['title'] || prj['name'].capitalize %></a>
     </h1>
-    <%= prj.metadata.description %>
+    <%= prj['description'] %>
   </div>
   <br/><br/>
+
 <% end %>
 

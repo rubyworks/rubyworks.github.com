@@ -83,6 +83,20 @@
 
  
  <entry>
+   <title>ANSI 1.3.0</title>
+   <link href="http://rubyworks.github.com2011-07-14-ansi_1.3.0/index.html"/>
+   <updated>2011-06-30</updated>
+   <id>http://rubyworks.github.com</id>
+   <content type="html"><p>ANSI 1.3.0 has been release. If you are not familiar with ANSI,
+it is a collection of ANSI escape code related libraries enabling
+ANSI code based colorization and stylization of output on TTY
+consoles.</p>
+
+     <p><a href="http://rubyworks.github.com2011-07-14-ansi_1.3.0/index.html">Continue Reading...</a></p>
+   </content>
+ </entry>
+ 
+ <entry>
    <title>Hashery and Mixers</title>
    <link href="http://rubyworks.github.com2010-05-08-hashery_and_mixers/index.html"/>
    <updated>2010-05-08</updated>
